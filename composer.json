@@ -1,0 +1,35 @@
+{
+    "description": "Bulk Product Category Mover for WooCommerce.",
+    "version": "1.0.0",
+    "license": "GPL-3.0-or-later",
+    "config": {
+        "autoloader-suffix": "BULKPRODMOV_c47f2e9ad13b58f4e6a0bd59c82fa731",
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "authors": [
+        {
+            "name": "SleekApps"
+        }
+    ],
+    "require": {
+		"php": ">=7.4"
+	},
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "wp-coding-standards/wpcs": "^3.0"
+    },
+    "scripts": {
+        "phpcs": "vendor/bin/phpcs --standard=phpcs.xml",
+        "phpcbf": "vendor/bin/phpcbf --standard=phpcs.xml"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "BULKPRODMOV\\": "includes/"
+        }
+    }
+}

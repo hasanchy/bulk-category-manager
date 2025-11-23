@@ -1,0 +1,17 @@
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import App from "./app/App";
+import store from './store/store';
+import './assets/styles/main.scss';
+
+const domElement = document.getElementById( window.bulkprodmovData.dom_element_id );
+
+if(domElement){
+	const root = createRoot(domElement)
+
+	root.render(
+		<Provider store={store}>
+			<App />
+		</Provider>
+	)
+}
