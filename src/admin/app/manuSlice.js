@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	activeTab: 'products', // products, settings
+	activeTab: 'categoryMover', // categoryMover, settings
 }
 
 export const menuSlice = createSlice({

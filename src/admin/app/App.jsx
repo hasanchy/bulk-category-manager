@@ -6,13 +6,14 @@ import { __ } from '@wordpress/i18n';
 import { setActiveTab } from './manuSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { NotificationProvider } from '../utils/NotificationProvider';
+import CategoryMover from '../features/category-mover/CategoryMover';
 
 const colorHighlight = window.bulkprodmovData.adminColors.highlight;
 
 const menuItems = [
     {
-        label: __('Products', 'bulk-product-category-mover-for-woocommerce'),
-        key: 'products',
+        label: __('Category Mover', 'bulk-product-category-mover-for-woocommerce'),
+        key: 'categoryMover',
         icon: <ProductOutlined />,
     },
     {
@@ -31,7 +32,7 @@ const App = () => {
 	}, []);
 
     const tabComponents = useMemo(() => ({
-        products: <div>Products</div>,
+        categoryMover: <CategoryMover></CategoryMover>,
         settings: <div>Settings</div>,
     }), []);
 
@@ -63,7 +64,7 @@ const App = () => {
                     >
                         <Header style={{ display: 'flex', alignItems: 'center', padding: '0px 20px' }}>
                             <h1 style={{ fontFamily: 'Trebuchet MS', fontWeight: 600, fontSize: '22px', marginBottom: '10px', marginRight: '50px' }}>
-                                <span style={{ color: '#ffffff' }}>{__( 'Product Category Mover', 'bulk-product-category-mover-for-woocommerce' )}</span>
+                                <span style={{ color: '#ffffff' }}>{__( 'Bulk Product Category Mover', 'bulk-product-category-mover-for-woocommerce' )}</span>
                             </h1>
                             <Menu
                                 theme="dark"
