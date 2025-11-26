@@ -7,6 +7,7 @@ namespace BULKPRODMOV\Core;
 
 use BULKPRODMOV\Core\Base;
 use BULKPRODMOV\Admin\AdminPage;
+use BULKPRODMOV\Endpoints\V1\Categories;
 
 // Avoid direct file request
 defined( 'ABSPATH' ) || die( 'No direct access allowed!' );
@@ -86,5 +87,7 @@ final class Loader extends Base {
 	 */
 	private function init() {
 		AdminPage::instance()->init();
+
+		Categories::instance();
 	}
 }

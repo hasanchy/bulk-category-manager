@@ -5,6 +5,7 @@ import { SettingOutlined, ProductOutlined } from '@ant-design/icons';
 import { __ } from '@wordpress/i18n';
 import { setActiveTab } from './manuSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategories } from '../services/apiService';
 import { NotificationProvider } from '../utils/NotificationProvider';
 import CategoryMover from '../features/category-mover/CategoryMover';
 
@@ -29,6 +30,7 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(fetchCategories());
 	}, []);
 
     const tabComponents = useMemo(() => ({

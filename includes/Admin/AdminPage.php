@@ -132,7 +132,7 @@ class AdminPage extends Base {
 			'localize'  => array(
 				'dom_element_id' => $this->unique_id,
 				'restEndpoint'   => array(
-					
+					'categories'          => esc_url_raw( rest_url() . 'bulk-product-category-mover-for-woocommerce/v1/categories' ),
 				),
 				'restNonce'      => wp_create_nonce( 'wp_rest' ),
 				'adminColors'    => $this->get_admin_colors(),

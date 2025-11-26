@@ -19,7 +19,7 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 		let checked = e.target.checked;
 		let newSelectedCategories;
 		if (checked) {
-			newSelectedCategories = [...selectedCategories, { id: category.term_id, name: category.name }];
+			newSelectedCategories = [...selectedCategories, { id: category.term_id, name: category.name, count: category.count }];
 		} else {
 			newSelectedCategories = selectedCategories.filter(sc => sc.id !== category.term_id);
 		}
@@ -103,7 +103,7 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 					disabled={disabled || isLoading}
 					checked={selectedCategories.some(sc => sc.id === category.term_id)}
 				>
-					{highlightText(category.name?.replace(/&amp;/g, "&"), searchKeyword)}
+					{highlightText(category.name?.replace(/&amp;/g, "&"), searchKeyword)} ({category.count})
 				</Checkbox>
 			),
 			key: category.term_id,
