@@ -30,3 +30,21 @@ export const createCategory = async (categoryData) => {
 		throw new Error('Failed to create category');
 	}
 };
+
+export const moveProductCategories = createAsyncThunk('categories/move', async (data, { rejectWithValue }) => {
+	try {
+		const res = await axios.post(
+			`${bulkprodmovData.restEndpoint.categories}/move`,
+			data,
+			{
+				headers: {
+					'content-type': 'application/json',
+					'X-WP-NONCE': bulkprodmovData.restNonce
+				}
+			}
+		);
+		return res.data;
+	} catch (error) {
+		return rejectWithValue(error.response.data);
+	}
+});

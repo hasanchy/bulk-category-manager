@@ -46,6 +46,18 @@ class Categories extends Endpoint {
 				),
 			)
 		);
+		
+		\register_rest_route(
+			$this->get_namespace(),
+			$this->get_endpoint().'/move',
+			array(
+				array(
+					'methods'             => 'POST',
+					'callback'            => array( $this, 'move_products' ),
+					'permission_callback' => array( $this, 'edit_permission' ),
+				),
+			)
+		);
 	}
 
 	/**
@@ -98,4 +110,70 @@ class Categories extends Endpoint {
 
 		return new WP_REST_Response( \esc_html__( 'Category created successfully', 'bulk-product-category-mover-for-woocommerce' ), 201 );
 	}
+
+	/**
+     * Move products from source categories to destination categories in batches.
+     */
+    public function move_products(WP_REST_Request $request) {
+
+        $source = $request->get_param('source_categories');
+        $destination = $request->get_param('destination_categories');
+        $batch_size = intval($request->get_param('batch_size')) ?: 10;
+
+        if (empty($source) || empty($destination)) {
+            return new WP_REST_Response([
+                'success' => false,
+                'message' => 'source_categories and destination_categories fields are required.'
+            ], 400);
+        }
+
+        // Query products in source categories
+        $query = new \WP_Query([
+            'post_type'      => 'product',
+            'posts_per_page' => $batch_size,
+            'fields'         => 'ids',
+            'tax_query'      => [
+                [
+                    'taxonomy' => 'product_cat',
+                    'field'    => 'term_id',
+                    'terms'    => $source,
+                ]
+            ]
+        ]);
+
+        $product_ids = $query->posts;
+        $remaining   = $query->found_posts;
+
+        if (empty($product_ids)) {
+            return new WP_REST_Response([
+                'success' => true,
+                'message' => 'No products remaining.',
+                'finished' => true,
+                'moved' => 0,
+                'remaining' => 0
+            ]);
+        }
+
+        // Process this batch
+        foreach ($product_ids as $product_id) {
+
+            $existing_cats = wp_get_post_terms($product_id, 'product_cat', ['fields' => 'ids']);
+
+            // Remove source categories
+            $new_categories = array_diff($existing_cats, $source);
+
+            // Add destination categories
+            $new_categories = array_unique(array_merge($new_categories, $destination));
+
+            wp_set_post_terms($product_id, $new_categories, 'product_cat');
+        }
+
+        return new WP_REST_Response([
+            'success'   => true,
+            'message'   => 'Batch processed.',
+            'finished'  => false,
+            'moved'     => count($product_ids),
+            'remaining' => max(0, $remaining - $batch_size)
+        ]);
+    }
 }

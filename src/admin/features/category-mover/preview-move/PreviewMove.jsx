@@ -5,18 +5,26 @@ import { DoubleRightOutlined, EditOutlined, ExportOutlined, ForwardOutlined, Lef
 import CategoryMoverSteps from '../category-mover-steps/CategoryMoverSteps';
 import { setCategoryMoverStepIndex } from '../categoryMoverSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { moveProductCategories } from '../../../services/apiService';
+import ProgressFooter from '../../../components/progress-footer/ProgressFooter';
 
 const PreviewMove = () => {
 
     const dispatch = useDispatch();
-    const { sourceCategoryIds, destinationCategoryIds, actionMode } = useSelector((state) => state.categoryMover);
+    const { sourceCategoryIds, destinationCategoryIds, actionMode, isProductCategoriesMoving } = useSelector((state) => state.categoryMover);
 
     const handleBack = () => {
         dispatch( setCategoryMoverStepIndex(3) );
     }
 
-    const handleNext = () => {
-        // dispatch( setCategoryMoverStepIndex(4) );
+    const handleProductMove = () => {
+        let data = {
+            source_categories: sourceCategoryIds.map(category => category.id),
+            destination_categories: destinationCategoryIds.map(category => category.id),
+            batch_size: 10
+        };
+
+        dispatch( moveProductCategories(data) );
     }
 
     const renderFooterLeft = () => {
@@ -39,8 +47,8 @@ const PreviewMove = () => {
                 icon={<DoubleRightOutlined />}
                 iconPosition="end"
                 type="primary" 
-                disabled={false}
-                onClick={handleNext}
+                loading={isProductCategoriesMoving}
+                onClick={handleProductMove}
             >
                 { __( 'Move 1020 Products', 'bulk-product-category-mover-for-woocommerce' ) }
             </Button>
@@ -90,6 +98,10 @@ const PreviewMove = () => {
         </Tag>
     }
 
+    const handleStopButtonClick = () => {
+        
+    }
+
     return (
         <React.Fragment>
             <Card>
@@ -134,7 +146,7 @@ const PreviewMove = () => {
                     </Row>
                 </Space>
             </Card>
-            <Card
+            {/* <Card
                 size='small'
                 style={{
                     position: 'sticky',
@@ -152,10 +164,19 @@ const PreviewMove = () => {
                         {renderFooterCenter()}
                     </div>
                     <div className='bulkprodmov-product-search-footer-right'>
-                        {/* {renderFooterRight()} */}
+                        
                     </div>
                 </div>
-            </Card>
+            </Card> */}
+            <ProgressFooter
+                totalProgressCount={ 10 }
+                totalCount={ 90 }
+                isActionInProgress={ true }
+                onStopButtonClick={handleStopButtonClick}
+                isStoppingInProgress={ false }
+                display={ true }
+                danger={ false }
+            />
         </React.Fragment>
     )
 }
