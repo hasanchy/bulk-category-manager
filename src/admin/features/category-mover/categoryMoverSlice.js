@@ -6,7 +6,12 @@ const initialState = {
     sourceCategoryIds: [],
     destinationCategoryIds: [],
     actionMode: 'move',
-    isProductCategoriesMoving: false
+    isProductCategoriesMoving: false,
+    isMovingApiRequestInProgress: false,
+
+    totalToMoveCount: 0,
+    totalMovedCount: 0,
+    isProductMovingStopping: false
 }
 
 export const categoryMoverSlice = createSlice({
@@ -24,20 +29,32 @@ export const categoryMoverSlice = createSlice({
         },
         setActionMode: (state, action) => {
             state.actionMode = action.payload
+        },
+        setTotalToMoveCount: (state, action) => {
+            state.totalToMoveCount = action.payload
+        },
+        setTotalMovedCount: (state, action) => {
+            state.totalMovedCount = action.payload
+        },
+        setIsProductMovingStopping: (state, action) => {
+            state.isProductMovingStopping = action.payload
+        },
+        setIsProductCategoriesMoving: (state, action) => {
+            state.isProductCategoriesMoving = action.payload
         }
     },
     extraReducers: (builder) => {
 		builder.addCase(moveProductCategories.pending, (state) => {
-			state.isProductCategoriesMoving = true;
+			state.isMovingApiRequestInProgress = true;
 		}),
 		builder.addCase(moveProductCategories.fulfilled, (state, action) => {
-			state.isProductCategoriesMoving = false;
+			state.isMovingApiRequestInProgress = false;
 		}),
 		builder.addCase(moveProductCategories.rejected, (state, action) => {
-			state.isProductCategoriesMoving = false;
+			state.isMovingApiRequestInProgress = false;
 		});
 	}
 });
 
-export const { setCategoryMoverStepIndex, setSourceCategoryIds, setDestinationCategoryIds, setActionMode } = categoryMoverSlice.actions
+export const { setCategoryMoverStepIndex, setSourceCategoryIds, setDestinationCategoryIds, setActionMode, setTotalToMoveCount, setTotalMovedCount, setIsProductMovingStopping, setIsProductCategoriesMoving } = categoryMoverSlice.actions
 export default categoryMoverSlice.reducer;
