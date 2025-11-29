@@ -5,7 +5,7 @@ import { DoubleRightOutlined, EditOutlined, ExportOutlined, ForwardOutlined, Lef
 import CategoryMoverSteps from '../category-mover-steps/CategoryMoverSteps';
 import { setCategoryMoverStepIndex, setIsProductCategoriesMoving, setIsProductMovingStopping, setTotalMovedCount, setTotalToMoveCount } from '../categoryMoverSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { moveProductCategories } from '../../../services/apiService';
+import { fetchCategories, moveProductCategories } from '../../../services/apiService';
 import ProgressFooter from '../../../components/progress-footer/ProgressFooter';
 import MoveFooter from './MoveFooter';
 
@@ -40,12 +40,13 @@ const PreviewMove = () => {
 
         let totalMovedCount = 0;
 
-        let totalIterations = Math.ceil( 70/10 );
+        let totalIterations = Math.ceil( 200/10 );
         let i = 0;
 
-        dispatch( setTotalToMoveCount(70) );
+        dispatch( setTotalToMoveCount(200) );
         dispatch( setTotalMovedCount(0) );
 
+        let failed = 0;
         while(i < totalIterations){
             let response = await dispatch( moveProductCategories(data) );
             let total = Number( response.payload?.moved ?? 0 );
@@ -54,6 +55,11 @@ const PreviewMove = () => {
                 totalMovedCount += total;
 
                 dispatch( setTotalMovedCount (totalMovedCount) );
+            }else{
+                failed++;
+                if(failed === 2){
+                    break;
+                }
             }
 
             i++;
@@ -62,6 +68,8 @@ const PreviewMove = () => {
             }
         }
 
+        dispatch( setTotalMovedCount(200) );
+        await dispatch( fetchCategories() );
         dispatch( setIsProductCategoriesMoving( false ) );
         dispatch( setIsProductMovingStopping( false ) );
         
