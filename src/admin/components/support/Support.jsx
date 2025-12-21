@@ -1,0 +1,59 @@
+import { __ } from '@wordpress/i18n';
+import { useState } from 'react';
+import { Drawer, Button, Typography, Row, Col, Space } from 'antd';
+import { CustomerServiceOutlined } from '@ant-design/icons';
+import SupportForm from './SupportForm';
+
+const Support = ({ ratingUrl }) => {
+    const [open, setOpen] = useState(false);
+    const showDrawer = () => {
+        setOpen(true);
+    };
+    const onClose = () => {
+        setOpen(false);
+    };
+
+    return (
+        <>
+            <Space style={{ height: '100%', alignItems: 'center' }}>
+                <Button 
+                    type="default" 
+                    icon={<CustomerServiceOutlined />}
+                    onClick={showDrawer}
+                    title={__('Support', 'bulk-product-category-mover-for-woocommerce')}
+                >
+                </Button>
+            </Space>
+            <Drawer
+                title={__('Feedback & Help', 'bulk-product-category-mover-for-woocommerce')}
+                placement="right"
+                width={600}
+                onClose={onClose}
+                open={open}
+                style={{ 
+                    marginTop: '32px',
+                    paddingBottom: '32px'	
+                }}
+            >
+                <Row>
+                    <Col span={24}>
+                        <SupportForm />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span={24}>
+                        <Typography.Title level={5}>
+                            {__('If you enjoy the plugin, we’d appreciate a ', 'bulk-product-category-mover-for-woocommerce')}
+                            <a href={ratingUrl} target="_blank" rel="noopener noreferrer">
+                                {__('5-star review on Envato.', 'bulk-product-category-mover-for-woocommerce')}
+                            </a>
+                            {__(' It helps us improve and grow. Thank you!', 'bulk-product-category-mover-for-woocommerce')}
+                        </Typography.Title>
+                    </Col>
+                </Row>
+            </Drawer>
+        </>
+    );
+};
+
+export default Support;
