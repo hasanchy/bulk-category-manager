@@ -38,8 +38,8 @@ const MultiKeywordsInput = ({
             return (
                 <Space style={{marginTop:'15px'}}>
                     <Select size='small' onChange={handleOptionValueChange} value={option} style={{width:'110px'}}>
-                        <Select.Option value='or'>{__('Match any', 'bulk-product-category-mover-for-woocommerce')}</Select.Option>
-                        <Select.Option value='and'>{__('Match all ', 'bulk-product-category-mover-for-woocommerce')}</Select.Option>
+                        <Select.Option value='or'>{__('Match any', 'bulk-category-manager')}</Select.Option>
+                        <Select.Option value='and'>{__('Match all ', 'bulk-category-manager')}</Select.Option>
                     </Select>
                     <Popover content={popoverContent} placement="right" trigger="hover">
                         <InfoCircleOutlined style={{ cursor: 'pointer' }} />
@@ -52,8 +52,8 @@ const MultiKeywordsInput = ({
 
     const popoverContent = (
         <ul style={{ paddingLeft: 16, margin: 0 }}>
-            <li><b>{__('Match any', 'bulk-product-category-mover-for-woocommerce')}</b> - {optionAnyDescription}</li>
-            <li><b>{__('Match all', 'bulk-product-category-mover-for-woocommerce')}</b> - {optionAllDescription}</li>
+            <li><b>{__('Match any', 'bulk-category-manager')}</b> - {optionAnyDescription}</li>
+            <li><b>{__('Match all', 'bulk-category-manager')}</b> - {optionAllDescription}</li>
         </ul>
     );
 

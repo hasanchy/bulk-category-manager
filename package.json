@@ -1,5 +1,5 @@
 {
-	"name": "bulk-product-category-mover-for-woocommerce",
+	"name": "bulk-category-manager",
 	"version": "1.0.0",
 	"description": "Move products in bulk from one product category to another in WooCommerce, with batch processing and progress UI.",
 	"main": "index.js",
@@ -9,20 +9,20 @@
 		"start": "cross-env NODE_ENV=development wp-scripts start src/admin/main.jsx --hot",
 		"compile": "cross-env NODE_ENV=production wp-scripts build src/admin/main.jsx",
 		"compile-unminified": "cross-env NODE_ENV=production-unminified wp-scripts build src/admin/main.jsx --mode production",
-		"translate": "wp i18n make-pot . languages/bulk-product-category-mover-for-woocommerce.pot --exclude=builds/,node_modules/,src,builds --ignore-domain --allow-root",
+		"translate": "wp i18n make-pot . languages/bulk-category-manager.pot --exclude=builds/,node_modules/,src,builds --ignore-domain --allow-root",
 		"build": "grunt vendorClean && npm run composer-update-no-dev && grunt preBuildClean && npm run compile && npm run translate && npm run compile-unminified && grunt build:pro && grunt finish && npm run composer-update"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://hasanchy@github.com/hasanchy/bulk-product-category-mover-for-woocommerce.git"
+		"url": "git+https://hasanchy@github.com/hasanchy/bulk-category-manager.git"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/hasanchy/bulk-product-category-mover-for-woocommerce/issues"
+		"url": "https://github.com/hasanchy/bulk-category-manager/issues"
 	},
-	"homepage": "https://github.com/hasanchy/bulk-product-category-mover-for-woocommerce#readme",
+	"homepage": "https://github.com/hasanchy/bulk-category-manager#readme",
 	"dependencies": {
 		"@ant-design/charts": "^2.2.7",
 		"@reduxjs/toolkit": "^1.9.5",

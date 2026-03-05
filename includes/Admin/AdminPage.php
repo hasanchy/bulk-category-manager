@@ -3,12 +3,12 @@
  * Affiliate Products Import block.
  */
 
-namespace BULKPRODMOV\Admin;
+namespace BULKCATMAN\Admin;
 
 // Abort if called directly.
 defined( 'ABSPATH' ) || die( 'No direct access allowed!' );
 
-use BULKPRODMOV\Core\Base;
+use BULKCATMAN\Core\Base;
 
 class AdminPage extends Base {
 	/**
@@ -23,7 +23,7 @@ class AdminPage extends Base {
 	 *
 	 * @var string
 	 */
-	private $page_slug = 'bulk-product-category-mover-for-woocommerce-admin';
+	private $page_slug = 'bulk-category-manager-admin';
 
 	/**
 	 * Page Assets.
@@ -55,13 +55,13 @@ class AdminPage extends Base {
 	 */
 	public function init() {
 		if ( is_admin() ) {
-			$this->page_title     = 'Bulk Product Category Mover for WooCommerce';
-			$this->assets_version = ! empty( $this->script_data( 'version' ) ) ? $this->script_data( 'version' ) : BULKPRODMOV_VERSION;
-			$this->unique_id      = "bulkprodmov_main_wrap-{$this->assets_version}";
+			$this->page_title     = 'Bulk Category Manager for WooCommerce';
+			$this->assets_version = ! empty( $this->script_data( 'version' ) ) ? $this->script_data( 'version' ) : BULKCATMAN_VERSION;
+			$this->unique_id      = "bulkcatman_main_wrap-{$this->assets_version}";
 
 			add_action( 'admin_menu', array( $this, 'register_admin_page' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-			add_filter( 'plugin_action_links_' . BULKPRODMOV_PLUGIN_BASENAME, array( $this, 'add_action_links' ) );
+			add_filter( 'plugin_action_links_' . BULKCATMAN_PLUGIN_BASENAME, array( $this, 'add_action_links' ) );
 		}
 	}
 
@@ -73,16 +73,16 @@ class AdminPage extends Base {
 	 */
 	public function add_action_links( $links ) {
 		$new_links = array(
-			'<a href="' . admin_url( 'admin.php?page=' . $this->page_slug ) . '">' . __( 'Move Products', 'bulk-product-category-mover-for-woocommerce' ) . '</a>',
+			'<a href="' . admin_url( 'edit.php?post_type=product&page=' . $this->page_slug ) . '">' . __( 'Manage Categories', 'bulk-category-manager' ) . '</a>',
 		);
 		return array_merge( $new_links, $links );
 	}
 
 	public function register_admin_page() {
 		$page = add_submenu_page(
-			'woocommerce',
+			'edit.php?post_type=product', // Parent slug for WooCommerce Products menu
 			$this->page_title,
-			__( 'Product Category Mover', 'bulk-product-category-mover-for-woocommerce' ),
+			__( 'Bulk Category Manager', 'bulk-category-manager' ),
 			'manage_options',
 			$this->page_slug,
 			array( $this, 'callback' )
@@ -110,9 +110,9 @@ class AdminPage extends Base {
 			$this->page_scripts = array();
 		}
 
-		$handle       = 'bulkprodmov_adminpage';
-		$src          = BULKPRODMOV_ASSETS_URL . '/js/adminpage.min.js';
-		$style_src    = BULKPRODMOV_ASSETS_URL . '/css/adminpage.min.css';
+		$handle       = 'bulkcatman_adminpage';
+		$src          = BULKCATMAN_ASSETS_URL . '/js/adminpage.min.js';
+		$style_src    = BULKCATMAN_ASSETS_URL . '/css/adminpage.min.css';
 		$dependencies = ! empty( $this->script_data( 'dependencies' ) )
 			? $this->script_data( 'dependencies' )
 			: array(
@@ -132,7 +132,7 @@ class AdminPage extends Base {
 			'localize'  => array(
 				'dom_element_id' => $this->unique_id,
 				'restEndpoint'   => array(
-					'categories'          => esc_url_raw( rest_url() . 'bulk-product-category-mover-for-woocommerce/v1/categories' ),
+					'categories'          => esc_url_raw( rest_url() . 'bulk-category-manager/v1/categories' ),
 				),
 				'restNonce'      => wp_create_nonce( 'wp_rest' ),
 				'adminColors'    => $this->get_admin_colors(),
@@ -193,8 +193,8 @@ class AdminPage extends Base {
 	protected function raw_script_data(): array {
 		static $script_data = null;
 
-		if ( is_null( $script_data ) && file_exists( BULKPRODMOV_DIR . 'assets/js/adminpage.min.asset.php' ) ) {
-			$script_data = include BULKPRODMOV_DIR . 'assets/js/adminpage.min.asset.php';
+		if ( is_null( $script_data ) && file_exists( BULKCATMAN_DIR . 'assets/js/adminpage.min.asset.php' ) ) {
+			$script_data = include BULKCATMAN_DIR . 'assets/js/adminpage.min.asset.php';
 		}
 
 		return (array) $script_data;
@@ -217,7 +217,7 @@ class AdminPage extends Base {
 				);
 
 				if ( ! empty( $page_script['localize'] ) ) {
-					wp_localize_script( $handle, 'bulkprodmovData', $page_script['localize'] );
+					wp_localize_script( $handle, 'bulkcatmanData', $page_script['localize'] );
 				}
 
 				wp_enqueue_script( $handle );
@@ -226,7 +226,7 @@ class AdminPage extends Base {
 					wp_enqueue_style( $handle, $page_script['style_src'], array(), $this->assets_version );
 				}
 
-				wp_set_script_translations( $handle, 'bulk-product-category-mover-for-woocommerce', BULKPRODMOV_LANGUAGES_DIR );
+				wp_set_script_translations( $handle, 'bulk-category-manager', BULKCATMAN_LANGUAGES_DIR );
 			}
 		}
 	}

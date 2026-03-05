@@ -123,7 +123,7 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 		if (!isLoading) {
 			let values = Object.values(selectedCategories);
 			if (values.length) {
-				let categoriesTxt = values.length > 1 ? __('categories', 'bulk-product-category-mover-for-woocommerce') : __('category', 'bulk-product-category-mover-for-woocommerce');
+				let categoriesTxt = values.length > 1 ? __('categories', 'bulk-category-manager') : __('category', 'bulk-category-manager');
 				let categoriesName = values.map(category => (
 					<Tag
 						key={`tag${category.id}`}
@@ -156,11 +156,11 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 				));
 				return (
 					<div style={{ marginTop: '10px' }}>
-						<b>{__('Selected', 'bulk-product-category-mover-for-woocommerce')} {categoriesTxt}</b>: <Space wrap>{categoriesName}</Space>
+						<b>{__('Selected', 'bulk-category-manager')} {categoriesTxt}</b>: <Space wrap>{categoriesName}</Space>
 					</div>
 				);
 			} else if (displayError !== false) {
-				return <div style={{ marginTop: '10px' }}><Text type="danger">{__('Please select at least one category to import products', 'bulk-product-category-mover-for-woocommerce')}</Text></div>;
+				return <div style={{ marginTop: '10px' }}><Text type="danger">{__('Please select at least one category to import products', 'bulk-category-manager')}</Text></div>;
 			}
 			return null;
 		}
@@ -176,7 +176,7 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 			return <Button disabled={true} size='small' type="default" icon={<ReloadOutlined />} onClick={reloadCategories}></Button>;
 		}
 
-		return <Tooltip placement="topLeft" title={__('Reload Categories', 'bulk-product-category-mover-for-woocommerce')} color='purple' key={'reload-categories'}>
+		return <Tooltip placement="topLeft" title={__('Reload Categories', 'bulk-category-manager')} color='purple' key={'reload-categories'}>
 			<Button size='small' type="default" icon={<ReloadOutlined />} onClick={reloadCategories}></Button>
 		</Tooltip>;
 	};
@@ -204,7 +204,7 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 				<Row gutter={[16, 16]} align="middle">
 					<Col span={16}>
 						<Input
-							placeholder={__('Search categories', 'bulk-product-category-mover-for-woocommerce')}
+							placeholder={__('Search categories', 'bulk-category-manager')}
 							prefix={<SearchOutlined />}
 							size="small"
 							suffix={
@@ -230,7 +230,7 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 					</Col>
 					<Col span={8}>
 						<Space style={{ width: '100%', justifyContent: 'flex-start' }}>
-							<Tooltip placement="topLeft" title={__('Add a New Category', 'bulk-product-category-mover-for-woocommerce')} color='purple' key={'add-category'}>
+							<Tooltip placement="topLeft" title={__('Add a New Category', 'bulk-category-manager')} color='purple' key={'add-category'}>
 								<Button size='small' type="default" icon={<PlusOutlined />} onClick={showAddCategoryPopup}></Button>
 							</Tooltip>
 							{renderReloadButton()}
@@ -240,11 +240,11 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 				{isLoading && (
 					<Row style={{ marginTop: '16px' }}>
 						<Col span={24}>
-							<Space><Spin tip="" size="medium"> </Spin> <div>{__('Loading categories...', 'bulk-product-category-mover-for-woocommerce')}</div></Space>
+							<Space><Spin tip="" size="medium"> </Spin> <div>{__('Loading categories...', 'bulk-category-manager')}</div></Space>
 						</Col>
 					</Row>
 				)}
-				<div className="bulkprodmov-product-categories" style={{ marginTop: '16px' }}>
+				<div className="bulkcatman-product-categories" style={{ marginTop: '16px' }}>
 					<Tree
 						treeData={renderCategoryTree(filteredCategories)}
 						defaultExpandAll

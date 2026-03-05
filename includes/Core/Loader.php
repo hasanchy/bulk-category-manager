@@ -3,11 +3,11 @@
  * Class to boot up plugin.
  */
 
-namespace BULKPRODMOV\Core;
+namespace BULKCATMAN\Core;
 
-use BULKPRODMOV\Core\Base;
-use BULKPRODMOV\Admin\AdminPage;
-use BULKPRODMOV\Endpoints\V1\Categories;
+use BULKCATMAN\Core\Base;
+use BULKCATMAN\Admin\AdminPage;
+use BULKCATMAN\Endpoints\V1\Categories;
 
 // Avoid direct file request
 defined( 'ABSPATH' ) || die( 'No direct access allowed!' );

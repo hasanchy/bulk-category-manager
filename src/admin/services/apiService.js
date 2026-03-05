@@ -4,25 +4,25 @@ import { __ } from '@wordpress/i18n';
 
 export const fetchCategories = createAsyncThunk('categories/fetchCategories', async (params, { rejectWithValue }) => {
 	try {
-		const res = await axios.get(bulkprodmovData.restEndpoint.categories, {
+		const res = await axios.get(bulkcatmanData.restEndpoint.categories, {
 			headers: {
 				'content-type': 'application/json',
-				'X-WP-NONCE': bulkprodmovData.restNonce
+				'X-WP-NONCE': bulkcatmanData.restNonce
 			}
 		});
 		return res.data;
 	} catch (error) {
-		console.error(__('Error fetching categories:', 'bulk-product-category-mover-for-woocommerce'), error); // Add this line for debugging
+		console.error(__('Error fetching categories:', 'bulk-category-manager'), error); // Add this line for debugging
 		return rejectWithValue(error.response.data);
 	}
 });
 
 export const createCategory = async (categoryData) => {
 	try {
-		const response = await axios.post(bulkprodmovData.restEndpoint.categories, categoryData, {
+		const response = await axios.post(bulkcatmanData.restEndpoint.categories, categoryData, {
 			headers: {
 				'Content-Type': 'application/json',
-				'X-WP-NONCE': bulkprodmovData.restNonce
+				'X-WP-NONCE': bulkcatmanData.restNonce
 			}
 		});
 		return response.data;
@@ -34,12 +34,12 @@ export const createCategory = async (categoryData) => {
 export const moveProductCategories = createAsyncThunk('categories/move', async (data, { rejectWithValue }) => {
 	try {
 		const res = await axios.post(
-			`${bulkprodmovData.restEndpoint.categories}/move`,
+			`${bulkcatmanData.restEndpoint.categories}/move`,
 			data,
 			{
 				headers: {
 					'content-type': 'application/json',
-					'X-WP-NONCE': bulkprodmovData.restNonce
+					'X-WP-NONCE': bulkcatmanData.restNonce
 				}
 			}
 		);

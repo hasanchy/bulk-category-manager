@@ -33,7 +33,7 @@ const AdditionalOptions = () => {
                 disabled={false}
                 onClick={handleBack}
             >
-                { __( 'Back', 'bulk-product-category-mover-for-woocommerce' ) }
+                { __( 'Back', 'bulk-category-manager' ) }
             </Button>
         </Flex>
     }
@@ -47,18 +47,18 @@ const AdditionalOptions = () => {
                 disabled={false}
                 onClick={handleNext}
             >
-                { __( 'Next', 'bulk-product-category-mover-for-woocommerce' ) }
+                { __( 'Next', 'bulk-category-manager' ) }
             </Button>
         </Flex>
     }
 
     const options = [
         {
-            label: __( 'Move Products', 'bulk-product-category-mover-for-woocommerce' ),
+            label: __( 'Move Products', 'bulk-category-manager' ),
             value: 'move',
         },
         {
-            label: __( 'Copy Products', 'bulk-product-category-mover-for-woocommerce' ),
+            label: __( 'Copy Products', 'bulk-category-manager' ),
             value: 'copy',
         },
     ];
@@ -94,7 +94,7 @@ const AdditionalOptions = () => {
                         disabled={false}
                     >
                         <Form.Item
-                            label={ __('Action Mode', 'bulk-product-category-mover-for-woocommerce' ) }
+                            label={ __('Action Mode', 'bulk-category-manager' ) }
                             name="actionMode"
                         >
                             <Radio.Group
@@ -118,14 +118,14 @@ const AdditionalOptions = () => {
                     boxShadow: 'rgba(0, 0, 0, 0.05) 0px -5px 10px 0px'
                 }}
             >
-                <div className='bulkprodmov-product-search-footer'>
-                    <div className='bulkprodmov-product-search-footer-left'>
+                <div className='bulkcatman-product-search-footer'>
+                    <div className='bulkcatman-product-search-footer-left'>
                         {renderFooterLeft()}
                     </div>
-                    <div className='bulkprodmov-product-search-footer-center'>
+                    <div className='bulkcatman-product-search-footer-center'>
                         {/* {renderFooterCenter()} */}
                     </div>
-                    <div className='bulkprodmov-product-search-footer-right'>
+                    <div className='bulkcatman-product-search-footer-right'>
                         {renderFooterRight()}
                     </div>
                 </div>

@@ -1,10 +1,10 @@
-# Bulk Product Category Mover for WooCommerce
+# Bulk Category Manager for WooCommerce
 
 Quickly move WooCommerce products from one category to another in bulk with a fast, reliable, and user-friendly interface.
 
 ## 🚀 Overview
 
-**Bulk Product Category Mover for WooCommerce** is a lightweight yet powerful WordPress plugin that helps store owners easily reorganize their product catalog. If you’ve ever imported products into the wrong category or want to restructure your WooCommerce store, this plugin allows you to bulk-move products between categories in seconds.
+**Bulk Category Manager for WooCommerce** is a lightweight yet powerful WordPress plugin that helps store owners easily reorganize their product catalog. If you’ve ever imported products into the wrong category or want to restructure your WooCommerce store, this plugin allows you to bulk-move products between categories in seconds.
 
 ## ✨ Features
 

@@ -1,4 +1,4 @@
-*** Bulk Product Category Mover for WooCommerce ***
+*** Bulk Category Manager for WooCommerce ***
 
 2025-11-23 - version 1.0.0
 * Initial release

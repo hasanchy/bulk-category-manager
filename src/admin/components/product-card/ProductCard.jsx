@@ -4,7 +4,7 @@ import Icon, { ExportOutlined, AmazonOutlined, CloseCircleFilled, CheckSquareFil
 const { Link } = Typography;
 import { __ } from '@wordpress/i18n';
 
-const colorHighlight = window.bulkprodmovData.adminColors.highlight;
+const colorHighlight = window.bulkcatmanData.adminColors.highlight;
 
 const ProductCard = ({productData, displayBadge = false, status = null, message = null, deletable = false, onDeleteClick, selectable = false, selected = false, onSelectionClick}) => {
 
@@ -21,33 +21,33 @@ const ProductCard = ({productData, displayBadge = false, status = null, message 
             badgeText = <LoadingOutlined />;
         }else if( status === 'success' ){
             badgeColor = 'green';
-            badgeText = __('Imported', 'bulk-product-category-mover-for-woocommerce');
+            badgeText = __('Imported', 'bulk-category-manager');
         }else if( status === 'failed' ) {
             badgeColor = 'red';
-            badgeText = __('Failed', 'bulk-product-category-mover-for-woocommerce');
+            badgeText = __('Failed', 'bulk-category-manager');
             errorMessage = message;
         }
     }else if( productData.is_eligible ){
         badgeColor = (selectable && !selected) ? '#8dd6d6' : 'cyan';
-        badgeText = __('Eligible', 'bulk-product-category-mover-for-woocommerce');
+        badgeText = __('Eligible', 'bulk-category-manager');
     }else if( productData.reason === 'AlreadyImported' ){
         badgeColor = 'purple';
-        badgeText = __('Already Imported', 'bulk-product-category-mover-for-woocommerce');
+        badgeText = __('Already Imported', 'bulk-category-manager');
     }else if( productData.reason === 'OutOfStock' ){
         badgeColor = 'yellow';
-        badgeText = __('Out of Stock', 'bulk-product-category-mover-for-woocommerce');
+        badgeText = __('Out of Stock', 'bulk-category-manager');
     }else if( productData.reason === 'MissingRequiredWords' ){
         badgeColor = 'orange';
-        badgeText = __('Missing Required Words', 'bulk-product-category-mover-for-woocommerce');
-        infoMessage = productData.message ? productData.message : __('Missing required words for import.', 'bulk-product-category-mover-for-woocommerce');
+        badgeText = __('Missing Required Words', 'bulk-category-manager');
+        infoMessage = productData.message ? productData.message : __('Missing required words for import.', 'bulk-category-manager');
     }else if( productData.reason === 'ProhibitedWordsFound' ){
         badgeColor = 'pink';
-        badgeText = __('Prohibited Words Found', 'bulk-product-category-mover-for-woocommerce');
-        infoMessage = productData.message ? productData.message : __('Contains prohibited words.', 'bulk-product-category-mover-for-woocommerce');
+        badgeText = __('Prohibited Words Found', 'bulk-category-manager');
+        infoMessage = productData.message ? productData.message : __('Contains prohibited words.', 'bulk-category-manager');
     }else if( productData.reason === 'Invalid' ){
         badgeColor = 'red';
-        badgeText = __('Invalid ASIN', 'bulk-product-category-mover-for-woocommerce');
-        errorMessage = productData.message ? productData.message : __('Invalid ASIN.', 'bulk-product-category-mover-for-woocommerce');
+        badgeText = __('Invalid ASIN', 'bulk-category-manager');
+        errorMessage = productData.message ? productData.message : __('Invalid ASIN.', 'bulk-category-manager');
     }
 
     const decodeString = ( rawString ) => {
@@ -176,16 +176,16 @@ const ProductCard = ({productData, displayBadge = false, status = null, message 
         let buttonView = null;
         if(productData.post_url){
             buttonView = <Space>    
-                <Button type="default" title={__( 'View on Store', 'bulk-product-category-mover-for-woocommerce' )} onClick={handleViewProductPage}>
+                <Button type="default" title={__( 'View on Store', 'bulk-category-manager' )} onClick={handleViewProductPage}>
                     <ExportOutlined />
                 </Button>
-                <Button type="default" title={__( 'View on Amazon', 'bulk-product-category-mover-for-woocommerce' )} onClick={handleViewOnAmazon}>
+                <Button type="default" title={__( 'View on Amazon', 'bulk-category-manager' )} onClick={handleViewOnAmazon}>
                     <AmazonOutlined />
                 </Button>
             </Space>
         }else if ( productData.product_url ){
             buttonView = <Button type="default" onClick={handleViewOnAmazon}>
-                <AmazonOutlined /> {__( 'View on Amazon', 'bulk-product-category-mover-for-woocommerce' )}
+                <AmazonOutlined /> {__( 'View on Amazon', 'bulk-category-manager' )}
             </Button>
         }
 
@@ -222,7 +222,7 @@ const ProductCard = ({productData, displayBadge = false, status = null, message 
             let conditionColor = ( productData.condition === 'New' ) ? 'blue' : 'gold';
             return <Row>
                 <Col span="24" align="center">
-                    <Tag color={conditionColor} title={__( 'Condition', 'bulk-product-category-mover-for-woocommerce' )}>{productData.condition}</Tag>
+                    <Tag color={conditionColor} title={__( 'Condition', 'bulk-category-manager' )}>{productData.condition}</Tag>
                 </Col>
             </Row>
         }
@@ -244,7 +244,7 @@ const ProductCard = ({productData, displayBadge = false, status = null, message 
     }
 
     const renderCard = () => {
-        let cardClass = (selected) ? 'bulkprodmov-product-card-selected' : 'bulkprodmov-product-card';
+        let cardClass = (selected) ? 'bulkcatman-product-card-selected' : 'bulkcatman-product-card';
         return <Card className={cardClass} style={{cursor: selectable? 'pointer' : 'default'}} onClick={handleSelection}>
             {renderDeleteIcon()}
             {renderSelectIcon()}
@@ -262,7 +262,7 @@ const ProductCard = ({productData, displayBadge = false, status = null, message 
     const renderCardWithBadge = () => {
         let ribbonText;
 
-        let ribbonClass = (selected) ? 'bulkprodmov-product-card-ribbon-selected' : 'bulkprodmov-product-card-ribbon';
+        let ribbonClass = (selected) ? 'bulkcatman-product-card-ribbon-selected' : 'bulkcatman-product-card-ribbon';
 
         if( infoMessage ){
             ribbonText = <Space>

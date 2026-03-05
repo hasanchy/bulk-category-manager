@@ -79,7 +79,7 @@ const ImageCard = ({productData, displayBadge = false, badgeColor = false, badge
             </Space>
         }else if ( productData.product_url ){
             buttonView = <Button type="default" href={removeTagParameter( productData.product_url )} target='_blank'>
-                <AmazonOutlined /> {__( 'View on Amazon', 'bulk-product-category-mover-for-woocommerce' )}
+                <AmazonOutlined /> {__( 'View on Amazon', 'bulk-category-manager' )}
             </Button>
         }
 
@@ -144,7 +144,7 @@ const ImageCard = ({productData, displayBadge = false, badgeColor = false, badge
     }
 
     const renderCard = () => {
-        let cardClass = (selected) ? 'bulkprodmov-product-card-selected' : 'bulkprodmov-product-card';
+        let cardClass = (selected) ? 'bulkcatman-product-card-selected' : 'bulkcatman-product-card';
         return <Card className={cardClass} style={{padding:'0px!important'}}>
             <Space direction="vertical" size="small" style={{ width: '100%' }}>
                 {renderImageView()}
@@ -161,16 +161,16 @@ const ImageCard = ({productData, displayBadge = false, badgeColor = false, badge
         }
         else if(productData.import_status === 'invalid'){
             ribbonColor = 'red';
-            ribbonText = __( 'Invalid ASIN', 'bulk-product-category-mover-for-woocommerce' );
+            ribbonText = __( 'Invalid ASIN', 'bulk-category-manager' );
         }else if( productData.import_status === 'alreadyimported' ){
             ribbonColor = 'pink';
-            ribbonText = __( 'Previously Imported', 'bulk-product-category-mover-for-woocommerce' );
+            ribbonText = __( 'Previously Imported', 'bulk-category-manager' );
         }else if( productData.import_status === 'outofstock' ){
             ribbonColor = 'orange';
-            ribbonText = __( 'Out of Stock', 'bulk-product-category-mover-for-woocommerce' );
+            ribbonText = __( 'Out of Stock', 'bulk-category-manager' );
         }else{
             ribbonColor = 'cyan';
-            ribbonText = __( 'In Stock', 'bulk-product-category-mover-for-woocommerce' );
+            ribbonText = __( 'In Stock', 'bulk-category-manager' );
         }
 
         return <Badge.Ribbon color={ribbonColor} text={ribbonText} placement='start'>

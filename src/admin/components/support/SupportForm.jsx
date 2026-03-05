@@ -20,13 +20,13 @@ const SupportForm = () => {
                 message: values.message,
             }));
             if (sendSupportMessage.fulfilled.match(response)) {
-                setMessage({type: 'success', content: __('Your message has been sent!', 'bulk-product-category-mover-for-woocommerce')});
+                setMessage({type: 'success', content: __('Your message has been sent!', 'bulk-category-manager')});
                 form.resetFields(); // Reset the form fields after submission
             } else {
-                setMessage({type: 'error', content: __('Failed to send the message. Please try again later.', 'bulk-product-category-mover-for-woocommerce')});
+                setMessage({type: 'error', content: __('Failed to send the message. Please try again later.', 'bulk-category-manager')});
             }
         } catch (error) {
-            setMessage({type: 'error', content: __('Failed to send the message. Please try again later.', 'bulk-product-category-mover-for-woocommerce')});
+            setMessage({type: 'error', content: __('Failed to send the message. Please try again later.', 'bulk-category-manager')});
         } finally {
             setLoading(false); // Reset loading state after the operation
         }
@@ -39,7 +39,7 @@ const SupportForm = () => {
     return (
         <>
             <Typography.Paragraph>
-                {__('If you need assistance, encounter any issues, or have suggestions, please reach out to us using the form below.', 'bulk-product-category-mover-for-woocommerce')}
+                {__('If you need assistance, encounter any issues, or have suggestions, please reach out to us using the form below.', 'bulk-category-manager')}
             </Typography.Paragraph>
             <Form
                 name="supportForm"
@@ -50,16 +50,16 @@ const SupportForm = () => {
                 autoComplete="off"
             >
                 <Form.Item
-                    label={__( 'Your email address', 'bulk-product-category-mover-for-woocommerce' )}
+                    label={__( 'Your email address', 'bulk-category-manager' )}
                     name="email"
                     rules={[
                         {
                             required: true,
-                            message: __( 'Please input your email address!', 'bulk-product-category-mover-for-woocommerce' ),
+                            message: __( 'Please input your email address!', 'bulk-category-manager' ),
                         },
                         {
                             type: 'email',
-                            message: __( 'The input is not valid E-mail!', 'bulk-product-category-mover-for-woocommerce' ),
+                            message: __( 'The input is not valid E-mail!', 'bulk-category-manager' ),
                         },
                     ]}
                 >
@@ -67,11 +67,11 @@ const SupportForm = () => {
                 </Form.Item>
                 <Form.Item
                     name="message"
-                    label={__('Message', 'bulk-product-category-mover-for-woocommerce')}
+                    label={__('Message', 'bulk-category-manager')}
                     rules={[
                         {
                             required: true,
-                            message: __( 'Please input your message!', 'bulk-product-category-mover-for-woocommerce' ),
+                            message: __( 'Please input your message!', 'bulk-category-manager' ),
                         },
                     ]}
                 >
@@ -79,7 +79,7 @@ const SupportForm = () => {
                 </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit" loading={loading}> {/* Disable button while loading */}
-                        {__('Submit', 'bulk-product-category-mover-for-woocommerce')}
+                        {__('Submit', 'bulk-category-manager')}
                     </Button>
                 </Form.Item>
             </Form>

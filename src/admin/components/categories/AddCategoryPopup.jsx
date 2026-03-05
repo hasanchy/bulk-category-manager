@@ -55,21 +55,21 @@ const AddCategoryPopup = ({ isOpen, onCancel, onSuccess }) => {
     return (
         <Modal
             open={isOpen}
-            title={__('Add New Category', 'bulk-product-category-mover-for-woocommerce')}
+            title={__('Add New Category', 'bulk-category-manager')}
             onCancel={onCancel}
             footer={null}
         >
         <Form form={form} onFinish={handleSubmit} layout="vertical">
             <Form.Item
                 name="name"
-                label={__('Category Name', 'bulk-product-category-mover-for-woocommerce')}
-                rules={[{ required: true, message: __('Please enter category name', 'bulk-product-category-mover-for-woocommerce') }]}
+                label={__('Category Name', 'bulk-category-manager')}
+                rules={[{ required: true, message: __('Please enter category name', 'bulk-category-manager') }]}
             >
             <Input />
             </Form.Item>
-            <Form.Item name="parent" label={__('Parent Category', 'bulk-product-category-mover-for-woocommerce')}>
+            <Form.Item name="parent" label={__('Parent Category', 'bulk-category-manager')}>
             <Select
-                placeholder={__('Select parent category', 'bulk-product-category-mover-for-woocommerce')}
+                placeholder={__('Select parent category', 'bulk-category-manager')}
                 allowClear
                 showSearch
                 filterOption={filterOption}
@@ -79,12 +79,12 @@ const AddCategoryPopup = ({ isOpen, onCancel, onSuccess }) => {
                 optionFilterProp="label"
             />
             </Form.Item>
-            <Form.Item name="description" label={__('Description', 'bulk-product-category-mover-for-woocommerce')}>
+            <Form.Item name="description" label={__('Description', 'bulk-category-manager')}>
             <Input.TextArea />
             </Form.Item>
             <Form.Item>
             <Button type="primary" htmlType="submit" loading={loading}>
-                {__('Create Category', 'bulk-product-category-mover-for-woocommerce')}
+                {__('Create Category', 'bulk-category-manager')}
             </Button>
             </Form.Item>
         </Form>

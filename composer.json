@@ -1,9 +1,9 @@
 {
-    "description": "Bulk Product Category Mover for WooCommerce.",
+    "description": "Bulk Category Manager for WooCommerce.",
     "version": "1.0.0",
     "license": "GPL-3.0-or-later",
     "config": {
-        "autoloader-suffix": "BULKPRODMOV_c47f2e9ad13b58f4e6a0bd59c82fa731",
+        "autoloader-suffix": "BULKCATMAN_g67j2b9rt11b59f4e6a0bd09c82fa231",
         "sort-packages": true,
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
@@ -29,7 +29,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "BULKPRODMOV\\": "includes/"
+            "BULKCATMAN\\": "includes/"
         }
     }
 }

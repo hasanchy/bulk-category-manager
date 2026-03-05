@@ -20,12 +20,12 @@ const Support = ({ ratingUrl }) => {
                     type="default" 
                     icon={<CustomerServiceOutlined />}
                     onClick={showDrawer}
-                    title={__('Support', 'bulk-product-category-mover-for-woocommerce')}
+                    title={__('Support', 'bulk-category-manager')}
                 >
                 </Button>
             </Space>
             <Drawer
-                title={__('Feedback & Help', 'bulk-product-category-mover-for-woocommerce')}
+                title={__('Feedback & Help', 'bulk-category-manager')}
                 placement="right"
                 width={600}
                 onClose={onClose}
@@ -43,11 +43,11 @@ const Support = ({ ratingUrl }) => {
                 <Row>
                     <Col span={24}>
                         <Typography.Title level={5}>
-                            {__('If you enjoy the plugin, we’d appreciate a ', 'bulk-product-category-mover-for-woocommerce')}
+                            {__('If you enjoy the plugin, we’d appreciate a ', 'bulk-category-manager')}
                             <a href={ratingUrl} target="_blank" rel="noopener noreferrer">
-                                {__('5-star review on Envato.', 'bulk-product-category-mover-for-woocommerce')}
+                                {__('5-star review on Envato.', 'bulk-category-manager')}
                             </a>
-                            {__(' It helps us improve and grow. Thank you!', 'bulk-product-category-mover-for-woocommerce')}
+                            {__(' It helps us improve and grow. Thank you!', 'bulk-category-manager')}
                         </Typography.Title>
                     </Col>
                 </Row>
