@@ -11,8 +11,8 @@ export const NotificationProvider = ({ children }) => {
 
     const openNotification = (type, messageText, descriptionText, options = {}) => {
         api[type || 'info']({
-            message: __(messageText, 'bulk-product-category-mover-for-woocommerce'),
-            description: __(descriptionText, 'bulk-product-category-mover-for-woocommerce'),
+            message: __(messageText, 'bulk-category-manager'),
+            description: __(descriptionText, 'bulk-category-manager'),
             placement: 'bottomRight',
             duration: 3,
             ...options,

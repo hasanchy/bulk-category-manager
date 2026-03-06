@@ -12,8 +12,8 @@ import { __ } from '@wordpress/i18n';
 export const openNotification = (type, messageText, descriptionText, options = {}) => {
 	notification.open({
 		type,
-		message: __(messageText, 'bulk-product-category-mover-for-woocommerce'),
-		description: __(descriptionText, 'bulk-product-category-mover-for-woocommerce'),
+		message: __(messageText, 'bulk-category-manager'),
+		description: __(descriptionText, 'bulk-category-manager'),
 		placement: 'bottomRight',
 		duration: 3,
 		...options, // allow custom duration, placement, etc.

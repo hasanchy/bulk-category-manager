@@ -17,25 +17,25 @@ const MenuTabs = () => {
 	const tabItems = [
 		{
 			key: 'dashboard',
-			label: __( 'Dashboard', 'bulk-product-category-mover-for-woocommerce' ),
+			label: __( 'Dashboard', 'bulk-category-manager' ),
 			children: <Dashboard />,
 			icon: <DashboardOutlined />
 		},
 		{
 			key: 'import',
-			label: __( 'Import', 'bulk-product-category-mover-for-woocommerce' ),
+			label: __( 'Import', 'bulk-category-manager' ),
 			children: <Import/>,
 			icon: <DownloadOutlined />
 		},
 		{
 			key: 'products',
-			label: __( 'Products', 'bulk-product-category-mover-for-woocommerce' ),
+			label: __( 'Products', 'bulk-category-manager' ),
 			children: <Products/>,
 			icon: <ShoppingOutlined />
 		},
 		{
 			key: 'settings',
-			label: __( 'Settings', 'bulk-product-category-mover-for-woocommerce' ),
+			label: __( 'Settings', 'bulk-category-manager' ),
 			children: <Settings/>,
 			icon: <SettingOutlined />
 		}

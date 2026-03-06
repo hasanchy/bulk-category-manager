@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 		'includes/**',
 		'languages/**',
 		'uninstall.php',
-		'bulk-product-category-mover-for-woocommerce.php',
+		'bulk-category-manager.php',
 		'composer.json',
 		'readme.txt',
 		'changelog.txt',
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
 
 		checktextdomain: {
 			options: {
-				text_domain: 'bulk-product-category-mover-for-woocommerce',
+				text_domain: 'bulk-category-manager',
 				keywords: [
 					'__:1,2d',
 					'_e:1,2d',

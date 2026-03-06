@@ -3,7 +3,7 @@
  * Singleton class for all classes.
  */
 
-namespace BULKPRODMOV\Core;
+namespace BULKCATMAN\Core;
 
 // Abort if called directly.
 defined( 'ABSPATH' ) || die( 'No direct access allowed!' );
@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || die( 'No direct access allowed!' );
 /**
  * Class Singleton
  *
- * @package BULKPRODMOV\Core
+ * @package BULKCATMAN\Core
  */
 abstract class Singleton {
 

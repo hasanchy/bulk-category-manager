@@ -3,21 +3,21 @@
  * Main file for WordPress.
  *
  * @wordpress-plugin
- * Plugin Name:     Bulk Product Category Mover for WooCommerce
- * Plugin URI:      https://woocommerce.com/products/bulk-product-category-mover-for-woocommerce/
- * Description:     Move products in bulk from one product category to another in WooCommerce, with batch processing and progress UI.
- * Author:          SleekApps
- * Author URI:      https://sleekapps.io/
+ * Plugin Name:     Bulk Category Manager for WooCommerce
+ * Plugin URI:      https://woocommerce.com/products/bulk-category-manager/
+ * Description:     Manage product categories in bulk for WooCommerce, with batch processing and progress UI.
+ * Author:          ThemeDyno
+ * Author URI:      https://themedyno.io/
  * Version:         1.0.0
- * Text Domain:     bulk-product-category-mover-for-woocommerce
+ * Text Domain:     bulk-category-manager
  * Domain Path:     /languages
  * Requires Plugins: woocommerce
  *
  * Requires at least: 5.2
- * Tested up to: 6.8
+ * Tested up to: 6.9.1
  * Requires PHP: 7.2.0
  * WC requires at least: 7.9
- * WC tested up to: 10.1.1
+ * WC tested up to: 10.5.2
  *
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -32,30 +32,30 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 }
 
 // Define constants
-define( 'BULKPRODMOV_VERSION', '1.0.0' );
-define( 'BULKPRODMOV_PLUGIN_FILE', __FILE__ );
-define( 'BULKPRODMOV_DIR', plugin_dir_path( __FILE__ ) );
-define( 'BULKPRODMOV_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-define( 'BULKPRODMOV_LANGUAGES_DIR', BULKPRODMOV_DIR . '/languages' );
-define( 'BULKPRODMOV_URL', plugin_dir_url( __FILE__ ) );
-define( 'BULKPRODMOV_ASSETS_URL', BULKPRODMOV_URL . '/assets' );
+define( 'BULKCATMAN_VERSION', '1.0.0' );
+define( 'BULKCATMAN_PLUGIN_FILE', __FILE__ );
+define( 'BULKCATMAN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'BULKCATMAN_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'BULKCATMAN_LANGUAGES_DIR', BULKCATMAN_DIR . '/languages' );
+define( 'BULKCATMAN_URL', plugin_dir_url( __FILE__ ) );
+define( 'BULKCATMAN_ASSETS_URL', BULKCATMAN_URL . '/assets' );
 
 /**
- * BULKPRODMOV_ProductMoverHandler class.
+ * BULKCATMAN_BulkCategoryManagerHandler class.
  */
-class BULKPRODMOV_ProductMoverHandler {
+class BULKCATMAN_BulkCategoryManagerHandler {
 
 	/**
 	 * Holds the class instance.
 	 *
-	 * @var BULKPRODMOV_ProductMoverHandler $instance
+	 * @var BULKCATMAN_BulkCategoryManagerHandler $instance
 	 */
 	private static $instance = null;
 
 	/**
 	 * Return an instance of the class
 	 *
-	 * @return BULKPRODMOV_ProductMoverHandler class instance.
+	 * @return BULKCATMAN_BulkCategoryManagerHandler class instance.
 	 * @since 1.0.0
 	 */
 	public static function get_instance() {
@@ -72,7 +72,7 @@ class BULKPRODMOV_ProductMoverHandler {
 	private function __construct() {
 		add_action( 'plugins_loaded', array( $this, 'check_woocommerce' ), 5 ); // Run early to check WooCommerce
 		add_action( 'plugins_loaded', array( $this, 'load' ) );
-		if ( get_transient( 'bulkprodmov_activation_redirect' ) ) {
+		if ( get_transient( 'bulkcatman_activation_redirect' ) ) {
 			add_action( 'admin_init', array( $this, 'redirect_after_activation' ) );
 		}
 	}
@@ -85,7 +85,7 @@ class BULKPRODMOV_ProductMoverHandler {
 			add_action(
 				'admin_notices',
 				function () {
-					echo '<div class="error"><p>' . esc_html__( 'Bulk Product Category Mover for WooCommerce requires WooCommerce to be installed and activated.', 'bulk-product-category-mover-for-woocommerce' ) . '</p></div>';
+					echo '<div class="error"><p>' . esc_html__( 'Bulk Category Manager for WooCommerce requires WooCommerce to be installed and activated.', 'bulk-category-manager' ) . '</p></div>';
 				}
 			);
 			return;
@@ -96,16 +96,16 @@ class BULKPRODMOV_ProductMoverHandler {
 	 * Class initializer.
 	 */
 	public function load() {
-		BULKPRODMOV\Core\Loader::instance();
+		BULKCATMAN\Core\Loader::instance();
 	}
 
 	/**
 	 * Redirect function after activation.
 	 */
 	public function redirect_after_activation() {
-		if ( get_transient( 'bulkprodmov_activation_redirect' ) ) {
-			delete_transient( 'bulkprodmov_activation_redirect' );
-			wp_safe_redirect( admin_url( 'admin.php?page=bulk-product-category-mover-for-woocommerce-admin' ) );
+		if ( get_transient( 'bulkcatman_activation_redirect' ) ) {
+			delete_transient( 'bulkcatman_activation_redirect' );
+			wp_safe_redirect( admin_url( 'edit.php?post_type=product&page=bulk-category-manager-admin' ) );
 			exit;
 		}
 	}
@@ -121,4 +121,4 @@ add_action(
 );
 
 // Init the plugin and load the plugin instance
-BULKPRODMOV_ProductMoverHandler::get_instance();
+BULKCATMAN_BulkCategoryManagerHandler::get_instance();

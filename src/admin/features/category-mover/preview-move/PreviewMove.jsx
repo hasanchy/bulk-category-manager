@@ -84,7 +84,7 @@ const PreviewMove = () => {
                 disabled={false}
                 onClick={handleBack}
             >
-                { __( 'Back', 'bulk-product-category-mover-for-woocommerce' ) }
+                { __( 'Back', 'bulk-category-manager' ) }
             </Button>
         </Flex>
     }
@@ -98,7 +98,7 @@ const PreviewMove = () => {
                 loading={isProductCategoriesMoving}
                 onClick={handleProductMove}
             >
-                { __( 'Move 1020 Products', 'bulk-product-category-mover-for-woocommerce' ) }
+                { __( 'Move 1020 Products', 'bulk-category-manager' ) }
             </Button>
         </Flex>
     }
@@ -139,7 +139,7 @@ const PreviewMove = () => {
 
     const renderActionMode = () => {
 
-        let actionModeLabel = (actionMode === 'move') ? __( 'Move Products', 'bulk-product-category-mover-for-woocommerce' ) : __( 'Copy Products', 'bulk-product-category-mover-for-woocommerce' );
+        let actionModeLabel = (actionMode === 'move') ? __( 'Move Products', 'bulk-category-manager' ) : __( 'Copy Products', 'bulk-category-manager' );
 
         return <Tag>
             {actionModeLabel}
@@ -165,14 +165,14 @@ const PreviewMove = () => {
                     boxShadow: 'rgba(0, 0, 0, 0.05) 0px -5px 10px 0px'
                 }}
             >
-                <div className='bulkprodmov-product-search-footer'>
-                    <div className='bulkprodmov-product-search-footer-left'>
+                <div className='bulkcatman-product-search-footer'>
+                    <div className='bulkcatman-product-search-footer-left'>
                         {renderFooterLeft()}
                     </div>
-                    <div className='bulkprodmov-product-search-footer-center'>
+                    <div className='bulkcatman-product-search-footer-center'>
                         {renderFooterCenter()}
                     </div>
-                    <div className='bulkprodmov-product-search-footer-right'>
+                    <div className='bulkcatman-product-search-footer-right'>
                         
                     </div>
                 </div>
@@ -197,29 +197,29 @@ const PreviewMove = () => {
                 >
                     <Divider orientation="left">
                         <Space>
-                            { __('Source Categories', 'bulk-product-category-mover-for-woocommerce' ) } <EditOutlined style={{cursor:'pointer'}} onClick={() => dispatch(setCategoryMoverStepIndex(1))}/>
+                            { __('Source Categories', 'bulk-category-manager' ) } <EditOutlined style={{cursor:'pointer'}} onClick={() => dispatch(setCategoryMoverStepIndex(1))}/>
                         </Space>
                     </Divider>
                     <Row gutter={16}>
-                        <Col span={8} style={{ textAlign: 'right'}}>{ __('Categories', 'bulk-product-category-mover-for-woocommerce' ) }</Col>
+                        <Col span={8} style={{ textAlign: 'right'}}>{ __('Categories', 'bulk-category-manager' ) }</Col>
                         <Col span={16}>{renderSourceCategories()}</Col>
                     </Row>
                     <Divider orientation="left">
                         <Space>
-                            { __('Destination Categories', 'bulk-product-category-mover-for-woocommerce' ) } <EditOutlined style={{cursor:'pointer'}} onClick={() => dispatch(setCategoryMoverStepIndex(2))}/>
+                            { __('Destination Categories', 'bulk-category-manager' ) } <EditOutlined style={{cursor:'pointer'}} onClick={() => dispatch(setCategoryMoverStepIndex(2))}/>
                         </Space>
                     </Divider>
                     <Row gutter={16}>
-                        <Col span={8} style={{ textAlign: 'right'}}>{ __('Categories', 'bulk-product-category-mover-for-woocommerce' ) }</Col>
+                        <Col span={8} style={{ textAlign: 'right'}}>{ __('Categories', 'bulk-category-manager' ) }</Col>
                         <Col span={16}>{renderDestinationCategories()}</Col>
                     </Row>
                     <Divider orientation="left">
                         <Space>
-                            { __('Additional Options', 'bulk-product-category-mover-for-woocommerce' ) } <EditOutlined style={{cursor:'pointer'}} onClick={() => dispatch(setCategoryMoverStepIndex(3))}/>
+                            { __('Additional Options', 'bulk-category-manager' ) } <EditOutlined style={{cursor:'pointer'}} onClick={() => dispatch(setCategoryMoverStepIndex(3))}/>
                         </Space>
                     </Divider>
                     <Row gutter={16}>
-                        <Col span={8} style={{ textAlign: 'right'}}>{ __('Action mode', 'bulk-product-category-mover-for-woocommerce' ) }</Col>
+                        <Col span={8} style={{ textAlign: 'right'}}>{ __('Action mode', 'bulk-category-manager' ) }</Col>
                         <Col span={16}>{renderActionMode()}</Col>
                     </Row>
                 </Space>

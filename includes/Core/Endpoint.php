@@ -3,7 +3,7 @@
  * Base class for all endpoint classes.
  */
 
-namespace BULKPRODMOV\Core;
+namespace BULKCATMAN\Core;
 
 use WP_REST_Response;
 use WP_REST_Controller;
@@ -48,7 +48,7 @@ class Endpoint extends WP_REST_Controller {
 	 */
 	protected function __construct() {
 		// Setup namespace of the endpoint.
-		$this->namespace = 'bulk-product-category-mover-for-woocommerce/v' . $this->version;
+		$this->namespace = 'bulk-category-manager/v' . $this->version;
 
 		// If the single instance hasn't been set, set it now.
 		$this->register_hooks();
@@ -106,7 +106,7 @@ class Endpoint extends WP_REST_Controller {
 		 * @since 1.0.0
 		 *
 		 */
-		return apply_filters( 'bulkprodmov_rest_settings_permission', $capable, $request );
+		return apply_filters( 'bulkcatman_rest_settings_permission', $capable, $request );
 	}
 
 	/**

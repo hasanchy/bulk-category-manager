@@ -3,12 +3,12 @@
  * API endpoint class for fetching product categories.
  */
 
-namespace BULKPRODMOV\Endpoints\V1;
+namespace BULKCATMAN\Endpoints\V1;
 
 // Avoid direct file request
 defined( 'ABSPATH' ) || die( 'No direct access allowed!' );
 
-use BULKPRODMOV\Core\Endpoint;
+use BULKCATMAN\Core\Endpoint;
 use WP_Error;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -70,7 +70,7 @@ class Categories extends Endpoint {
 	public function get_categories( WP_REST_Request $request ) {
 		$nonce = $request->get_header( 'X-WP-NONCE' );
 		if ( ! \wp_verify_nonce( $nonce, 'wp_rest' ) ) {
-			return new WP_REST_Response( \esc_html__( 'Invalid nonce', 'bulk-product-category-mover-for-woocommerce' ), 403 );
+			return new WP_REST_Response( \esc_html__( 'Invalid nonce', 'bulk-category-manager' ), 403 );
 		}
 
 		$categories = \get_terms(
@@ -87,7 +87,7 @@ class Categories extends Endpoint {
 	public function create_category( WP_REST_Request $request ) {
 		$nonce = $request->get_header( 'X-WP-NONCE' );
 		if ( ! \wp_verify_nonce( $nonce, 'wp_rest' ) ) {
-			return new WP_REST_Response( \esc_html__( 'Invalid nonce', 'bulk-product-category-mover-for-woocommerce' ), 403 );
+			return new WP_REST_Response( \esc_html__( 'Invalid nonce', 'bulk-category-manager' ), 403 );
 		}
 
 		$params      = $request->get_params();
@@ -108,7 +108,7 @@ class Categories extends Endpoint {
 			return new WP_REST_Response( $term->get_error_message(), 400 );
 		}
 
-		return new WP_REST_Response( \esc_html__( 'Category created successfully', 'bulk-product-category-mover-for-woocommerce' ), 201 );
+		return new WP_REST_Response( \esc_html__( 'Category created successfully', 'bulk-category-manager' ), 201 );
 	}
 
 	/**

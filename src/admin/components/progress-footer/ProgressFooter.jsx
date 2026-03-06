@@ -59,14 +59,14 @@ const ProgressFooter = ( { totalProgressCount, totalCount, isActionInProgress, o
                     boxShadow: 'rgba(0, 0, 0, 0.05) 0px -5px 10px 0px'
                 }}
             >
-                <div className='bulkprodmov-product-search-footer'>
-                    <div className='bulkprodmov-product-search-footer-left'>
+                <div className='bulkcatman-product-search-footer'>
+                    <div className='bulkcatman-product-search-footer-left'>
                         {renderFooterLeft()}
                     </div>
-                    <div className='bulkprodmov-product-search-footer-center'>
+                    <div className='bulkcatman-product-search-footer-center'>
                         {renderFooterCenter()}
                     </div>
-                    <div className='bulkprodmov-product-search-footer-right'>
+                    <div className='bulkcatman-product-search-footer-right'>
                         {renderFooterRight()}
                     </div>
                 </div>

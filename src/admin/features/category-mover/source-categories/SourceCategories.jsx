@@ -37,7 +37,7 @@ const SourceCategories = () => {
                 disabled={sourceCategoryIds.length === 0}
                 onClick={handleNext}
             >
-                { __( 'Next', 'bulk-product-category-mover-for-woocommerce' ) }
+                { __( 'Next', 'bulk-category-manager' ) }
             </Button>
         </Flex>
     }
@@ -72,12 +72,12 @@ const SourceCategories = () => {
                         autoComplete="off"
                     >
                         <Form.Item
-                            label={__('Categories', 'bulk-product-category-mover-for-woocommerce')}
+                            label={__('Categories', 'bulk-category-manager')}
                             name="sourceCategoryIds"
                             rules={[
                                 {
                                     required: true,
-                                    message: __('Please select at least one category', 'bulk-product-category-mover-for-woocommerce'),
+                                    message: __('Please select at least one category', 'bulk-category-manager'),
                                 }
                             ]}
                         >
@@ -100,14 +100,14 @@ const SourceCategories = () => {
                     boxShadow: 'rgba(0, 0, 0, 0.05) 0px -5px 10px 0px'
                 }}
             >
-                <div className='bulkprodmov-product-search-footer'>
-                    <div className='bulkprodmov-product-search-footer-left'>
+                <div className='bulkcatman-product-search-footer'>
+                    <div className='bulkcatman-product-search-footer-left'>
                         {/* {renderFooterLeft()} */}
                     </div>
-                    <div className='bulkprodmov-product-search-footer-center'>
+                    <div className='bulkcatman-product-search-footer-center'>
                         {/* {renderFooterCenter()} */}
                     </div>
-                    <div className='bulkprodmov-product-search-footer-right'>
+                    <div className='bulkcatman-product-search-footer-right'>
                         {renderFooterRight()}
                     </div>
                 </div>

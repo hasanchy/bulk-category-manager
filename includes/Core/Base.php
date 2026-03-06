@@ -4,9 +4,9 @@
  * Base abstract class to be inherited by other classes
  */
 
-namespace BULKPRODMOV\Core;
+namespace BULKCATMAN\Core;
 
-use BULKPRODMOV\Core\Singleton;
+use BULKCATMAN\Core\Singleton;
 
 // Abort if called directly.
 defined( 'ABSPATH' ) || die( 'No direct access allowed!' );
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || die( 'No direct access allowed!' );
 /**
  * Class Base
  *
- * @package BULKPRODMOV\Core
+ * @package BULKCATMAN\Core
  */
 abstract class Base extends Singleton {
 	/**

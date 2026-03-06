@@ -13,8 +13,8 @@ const ProgressBar = ({percent, color = 'purple'}) => {
         };
     }else{
         strokeColor = {
-            from: window.bulkprodmovData.adminColors.highlight,
-            to: darkenColor( window.bulkprodmovData.adminColors.highlight, 75),
+            from: window.bulkcatmanData.adminColors.highlight,
+            to: darkenColor( window.bulkcatmanData.adminColors.highlight, 75),
         };
     }
 	return (

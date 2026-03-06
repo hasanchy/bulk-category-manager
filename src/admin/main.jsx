@@ -4,7 +4,7 @@ import App from "./app/App";
 import store from './store/store';
 import './assets/styles/main.scss';
 
-const domElement = document.getElementById( window.bulkprodmovData.dom_element_id );
+const domElement = document.getElementById( window.bulkcatmanData.dom_element_id );
 
 if(domElement){
 	const root = createRoot(domElement)

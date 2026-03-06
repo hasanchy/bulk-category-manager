@@ -1,4 +1,4 @@
-# Copyright (C) 2025 SleekApps
+# Copyright (C) 2026 ThemeDyno
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-23T16:40:09+00:00\n"
+"POT-Creation-Date: 2026-03-05T14:07:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 
@@ -25,17 +25,17 @@ msgstr ""
 
 #. Description of the plugin
 #: E:\github\bulk-category-manager\bulk-category-manager.php
-msgid "Move products in bulk from one product category to another in WooCommerce, with batch processing and progress UI."
+msgid "Manage product categories in bulk for WooCommerce, with batch processing and progress UI."
 msgstr ""
 
 #. Author of the plugin
 #: E:\github\bulk-category-manager\bulk-category-manager.php
-msgid "SleekApps"
+msgid "ThemeDyno"
 msgstr ""
 
 #. Author URI of the plugin
 #: E:\github\bulk-category-manager\bulk-category-manager.php
-msgid "https://sleekapps.io/"
+msgid "https://themedyno.io/"
 msgstr ""
 
 #: bulk-category-manager.php:88
@@ -47,5 +47,14 @@ msgid "Move Products"
 msgstr ""
 
 #: includes/Admin/AdminPage.php:85
-msgid "Product Category Mover"
+msgid "Bulk Category Manager"
+msgstr ""
+
+#: includes/Endpoints/V1/Categories.php:73
+#: includes/Endpoints/V1/Categories.php:90
+msgid "Invalid nonce"
+msgstr ""
+
+#: includes/Endpoints/V1/Categories.php:111
+msgid "Category created successfully"
 msgstr ""

@@ -8,10 +8,10 @@ const CategoryMoverSteps = () => {
 
     const getStepItems = () => {
 		let items = [
-            {title: __( 'Source Categories', 'bulk-product-category-mover-for-woocommerce' ) },
-            {title: __( 'Destination Categories', 'bulk-product-category-mover-for-woocommerce' ) },
-            {title: __( 'Additional Options', 'bulk-product-category-mover-for-woocommerce' ) },
-            {title: __( 'Preview & Move', 'bulk-product-category-mover-for-woocommerce' ) },
+            {title: __( 'Source Categories', 'bulk-category-manager' ) },
+            {title: __( 'Destination Categories', 'bulk-category-manager' ) },
+            {title: __( 'Additional Options', 'bulk-category-manager' ) },
+            {title: __( 'Preview & Move', 'bulk-category-manager' ) },
         ];
 
 		return items;

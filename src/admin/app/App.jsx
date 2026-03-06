@@ -9,16 +9,16 @@ import { fetchCategories } from '../services/apiService';
 import { NotificationProvider } from '../utils/NotificationProvider';
 import CategoryMover from '../features/category-mover/CategoryMover';
 
-const colorHighlight = window.bulkprodmovData.adminColors.highlight;
+const colorHighlight = window.bulkcatmanData.adminColors.highlight;
 
 const menuItems = [
     {
-        label: __('Category Mover', 'bulk-product-category-mover-for-woocommerce'),
+        label: __('Category Mover', 'bulk-category-manager'),
         key: 'categoryMover',
         icon: <ProductOutlined />,
     },
     {
-        label: __('Settings', 'bulk-product-category-mover-for-woocommerce'),
+        label: __('Settings', 'bulk-category-manager'),
         key: 'settings',
         icon: <SettingOutlined />,
     },
@@ -66,7 +66,7 @@ const App = () => {
                     >
                         <Header style={{ display: 'flex', alignItems: 'center', padding: '0px 20px' }}>
                             <h1 style={{ fontFamily: 'Trebuchet MS', fontWeight: 600, fontSize: '22px', marginBottom: '10px', marginRight: '50px' }}>
-                                <span style={{ color: '#ffffff' }}>{__( 'Bulk Product Category Mover', 'bulk-product-category-mover-for-woocommerce' )}</span>
+                                <span style={{ color: '#ffffff' }}>{__( 'Bulk Category Manager', 'bulk-category-manager' )}</span>
                             </h1>
                             <Menu
                                 theme="dark"
