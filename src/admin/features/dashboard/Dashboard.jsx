@@ -5,6 +5,8 @@ import TotalCategories from "./widgets/TotalCategories";
 import TotalEmptyCategories from "./widgets/TotalEmptyCategories";
 import TotalProducts from "./widgets/TotalProducts";
 import UncategorizedProducts from "./widgets/UncategorizedProducts";
+import TopCategories from "./widgets/TopCategories";
+import CategoryDistribution from "./widgets/CategoryDistribution";
 
 const Dashboard = () => {
 
@@ -31,6 +33,27 @@ const Dashboard = () => {
                         </div>
                         <div style={{ flex: '1 1 250px' }}>
                             <UncategorizedProducts />
+                        </div>
+                    </div>
+                </Col>
+            </Row>
+            <Row gutter={15}>
+                <Col span={24}>
+                    <div style={{ 
+                        columnCount: 2,     // number of columns
+                        columnGap: '15px',  // spacing between columns
+                    }}>
+                        <div style={{ breakInside: 'avoid', marginBottom: '15px' }}>
+                            <TopCategories />
+                        </div>
+                        <div style={{ breakInside: 'avoid', marginBottom: '15px' }}>
+                            <CategoryDistribution />
+                        </div>
+                        <div style={{ breakInside: 'avoid', marginBottom: '15px' }}>
+                            <CategoryDistribution />
+                        </div>
+                        <div style={{ breakInside: 'avoid', marginBottom: '15px' }}>
+                            <TopCategories />
                         </div>
                     </div>
                 </Col>
