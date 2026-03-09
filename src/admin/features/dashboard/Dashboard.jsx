@@ -7,13 +7,14 @@ import TotalProducts from "./widgets/TotalProducts";
 import UncategorizedProducts from "./widgets/UncategorizedProducts";
 import TopCategories from "./widgets/TopCategories";
 import CategoryDistribution from "./widgets/CategoryDistribution";
+import RecentOperations from "./widgets/RecentOperations";
 
 const Dashboard = () => {
 
     const dispatch = useDispatch();
 
     return (
-        <Space size={15} direction='vertical' style={{display:'flex'}}>
+        <Space size={15} orientation='vertical' style={{display:'flex'}}>
             <Row>
 				<Col span={24}>
                     <div style={{ 
@@ -47,13 +48,10 @@ const Dashboard = () => {
                             <TopCategories />
                         </div>
                         <div style={{ breakInside: 'avoid', marginBottom: '15px' }}>
-                            <CategoryDistribution />
+                            <RecentOperations />
                         </div>
                         <div style={{ breakInside: 'avoid', marginBottom: '15px' }}>
                             <CategoryDistribution />
-                        </div>
-                        <div style={{ breakInside: 'avoid', marginBottom: '15px' }}>
-                            <TopCategories />
                         </div>
                     </div>
                 </Col>
