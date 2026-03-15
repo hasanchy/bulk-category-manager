@@ -9,6 +9,7 @@ import { fetchCategories } from '../services/apiService';
 import { NotificationProvider } from '../utils/NotificationProvider';
 import CategoryMover from '../features/category-mover/CategoryMover';
 import Dashboard from '../features/dashboard/Dashboard';
+import ManageCategories from '../features/manage-categories/ManageCategories';
 
 const colorHighlight = window.bulkcatmanData.adminColors.highlight;
 
@@ -20,7 +21,7 @@ const menuItems = [
     },
     {
         label: __('Manage Categories', 'bulk-category-manager'),
-        key: 'categoryManager',
+        key: 'manageCategories',
         icon: <AppstoreOutlined />,
     },
     {
@@ -46,6 +47,7 @@ const App = () => {
 
     const tabComponents = useMemo(() => ({
         dashboard: <Dashboard />,
+        manageCategories: <ManageCategories />,
         categoryMover: <CategoryMover></CategoryMover>,
         settings: <div>Settings</div>,
     }), []);
@@ -83,7 +85,7 @@ const App = () => {
                             <Menu
                                 theme="dark"
                                 mode="horizontal"
-                                defaultSelectedKeys={['products']}
+                                defaultSelectedKeys={['dashboard']}
                                 selectedKeys={activeTab}
                                 items={menuItems}
                                 style={{ flex: 1, minWidth: 0 }}
