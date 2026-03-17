@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Space } from 'antd';
 import ActionTypeCards from './ActionTypeCards';
-import { EditOutlined, NumberOutlined, SearchOutlined } from '@ant-design/icons';
+import { CloseOutlined, DeleteOutlined, EditOutlined, NumberOutlined, SwapOutlined } from '@ant-design/icons';
 
 // import { setImportType } from '../importSlice';
 import { useDispatch } from 'react-redux';
@@ -23,7 +23,7 @@ const ActionTypeSelect = () => {
                 display: 'flex',
             }}>
                 <Card
-                    title={__( 'Select Action Type', 'auto-amazon-affiliate-for-woocommerce' )}
+                    title={__( 'Select Action Type', 'bulk-category-manager' )}
                 >
                     <Space
                         orientation='vertical'
@@ -35,18 +35,21 @@ const ActionTypeSelect = () => {
                         <ActionTypeCards
                             items={[
                                 {
-                                    key: 'search-keyword',
-                                    label: __( 'Move Products', 'auto-amazon-affiliate-for-woocommerce' ),
-                                    icon: <SearchOutlined/>
+                                    key: 'move-products',
+                                    label: __( 'Move Products', 'bulk-category-manager' ),
+                                    description: __( 'Move products from one category to another.', 'bulk-category-manager' ),
+                                    icon: <SwapOutlined/>
                                 },
                                 {
-                                    key: 'copy-paste',
-                                    label: __( 'Import by ASIN Code', 'auto-amazon-affiliate-for-woocommerce' ),
-                                    icon: <NumberOutlined/>
+                                    key: 'remove-from-category',
+                                    label: __( 'Remove from Category', 'bulk-category-manager' ),
+                                    description: __( 'Remove products from a category.', 'bulk-category-manager' ),
+                                    icon: <CloseOutlined/>
                                 },
                                 {
                                     key: 'manual-entry',
-                                    label: __( 'Add Product Manually', 'auto-amazon-affiliate-for-woocommerce' ),
+                                    label: __( 'Merge Products', 'bulk-category-manager' ),
+                                    description: __( 'Merge products into the selected category.', 'bulk-category-manager' ),
                                     icon: <EditOutlined/>
                                 }
                             ]}

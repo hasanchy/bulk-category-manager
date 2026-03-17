@@ -20,8 +20,8 @@ const menuItems = [
         icon: <DashboardOutlined />,
     },
     {
-        label: __('Manage Categories', 'bulk-category-manager'),
-        key: 'manageCategories',
+        label: __('Bulk Actions', 'bulk-category-manager'),
+        key: 'bulkActions',
         icon: <AppstoreOutlined />,
     },
     {
@@ -47,7 +47,7 @@ const App = () => {
 
     const tabComponents = useMemo(() => ({
         dashboard: <Dashboard />,
-        manageCategories: <ManageCategories />,
+        bulkActions: <ManageCategories />,
         categoryMover: <CategoryMover></CategoryMover>,
         settings: <div>Settings</div>,
     }), []);
