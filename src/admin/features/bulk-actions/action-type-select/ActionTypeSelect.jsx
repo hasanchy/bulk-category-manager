@@ -3,17 +3,16 @@ import { Card, Space } from 'antd';
 import ActionTypeCards from './ActionTypeCards';
 import { CloseOutlined, DeleteOutlined, EditOutlined, NumberOutlined, SwapOutlined } from '@ant-design/icons';
 
-// import { setImportType } from '../importSlice';
 import { useDispatch } from 'react-redux';
 import { __ } from '@wordpress/i18n';
-
+import { setBulkActionsType } from '../bulkActionsSlice';
 
 const ActionTypeSelect = () => {
 
     const dispatch = useDispatch();
 
     const handleActionTypeSelect = (type) => {
-        // dispatch(setImportType(type));
+        dispatch(setBulkActionsType(type));
     }
 
     return (
@@ -23,7 +22,7 @@ const ActionTypeSelect = () => {
                 display: 'flex',
             }}>
                 <Card
-                    title={__( 'Select Action Type', 'bulk-category-manager' )}
+                    title={__( 'Bulk Actions', 'bulk-category-manager' )}
                 >
                     <Space
                         orientation='vertical'

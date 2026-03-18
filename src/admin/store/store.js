@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import menuReducer from "../app/manuSlice";
 import categoryMoverSlice from '../features/category-mover/categoryMoverSlice';
-import manageCategoriesSlice from '../features/manage-categories/manageCategoriesSlice';
+import bulkActionsSlice from '../features/bulk-actions/bulkActionsSlice';
 import categoriesSlice from '../components/categories/categoriesSlice';
 
 const store = configureStore({
@@ -9,7 +9,7 @@ const store = configureStore({
 		menu: menuReducer,
 		categories: categoriesSlice,
 		categoryMover: categoryMoverSlice,
-		manageCategories: manageCategoriesSlice
+		bulkActions: bulkActionsSlice
 	},
 })
 

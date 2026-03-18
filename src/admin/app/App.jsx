@@ -9,7 +9,7 @@ import { fetchCategories } from '../services/apiService';
 import { NotificationProvider } from '../utils/NotificationProvider';
 import CategoryMover from '../features/category-mover/CategoryMover';
 import Dashboard from '../features/dashboard/Dashboard';
-import ManageCategories from '../features/manage-categories/ManageCategories';
+import BulkActions from '../features/bulk-actions/BulkActions';
 
 const colorHighlight = window.bulkcatmanData.adminColors.highlight;
 
@@ -47,7 +47,7 @@ const App = () => {
 
     const tabComponents = useMemo(() => ({
         dashboard: <Dashboard />,
-        bulkActions: <ManageCategories />,
+        bulkActions: <BulkActions />,
         categoryMover: <CategoryMover></CategoryMover>,
         settings: <div>Settings</div>,
     }), []);
