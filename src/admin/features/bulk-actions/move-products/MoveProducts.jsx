@@ -2,29 +2,30 @@ import React, { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useSelector } from 'react-redux';
 
-// import SourceCategories from './source-categories/SourceCategories';
+import SourceCategories from './source-categories/SourceCategories';
 // import DestinationCategories from './destination-categories/DestinationCategories';
 // import AdditionalOptions from './additional-options/AdditionalOptions';
 // import PreviewMove from './preview-move/PreviewMove';
 
 const MoveProducts = () => {
 
-    const { categoryMoverStepIndex } = useSelector((state) => state.categoryMover);
+    const { moveProductsStepIndex } = useSelector((state) => state.moveProducts);
 
     useEffect(()=>{
         document.documentElement.scrollTop = 0; // For modern browsers
         document.body.scrollTop = 0; // For older Safari
-    },[categoryMoverStepIndex]);
+    },[moveProductsStepIndex]);
 
     const renderProductsMoverSteps = () => {
-        if(categoryMoverStepIndex===1){
+        if(moveProductsStepIndex===2){
+            // return <div>{__('Source Categories Step')}</div>;
             return <SourceCategories />;
-        }else if(categoryMoverStepIndex===2){
-            return <DestinationCategories />;
-        }else if(categoryMoverStepIndex===3){
-            return <AdditionalOptions />;
-        }else if(categoryMoverStepIndex===4){
-            return <PreviewMove />;
+        }else if(moveProductsStepIndex===2){
+            // return <DestinationCategories />;
+        }else if(moveProductsStepIndex===3){
+            // return <AdditionalOptions />;
+        }else if(moveProductsStepIndex===4){
+            // return <PreviewMove />;
         }
     }
 

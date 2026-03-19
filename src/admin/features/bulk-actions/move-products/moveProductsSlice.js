@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { moveProductCategories } from '../../services/apiService';
+import { moveProductCategories } from '../../../services/apiService';
 
 const initialState = {
-    moveProductsStepIndex: 1,
+    moveProductsStepIndex: 2,
     sourceCategoryIds: [],
     destinationCategoryIds: [],
     actionMode: 'move',
@@ -18,8 +18,8 @@ export const moveProductsSlice = createSlice({
     name: 'moveProducts',
     initialState,
     reducers: {
-        setCategoryMoverStepIndex: (state, action) => {
-            state.categoryMoverStepIndex = action.payload;
+        setMoveProductsStepIndex: (state, action) => {
+            state.moveProductsStepIndex = action.payload;
         },
         setSourceCategoryIds: (state, action) => {
             state.sourceCategoryIds = action.payload
@@ -56,5 +56,5 @@ export const moveProductsSlice = createSlice({
     }
 });
 
-export const { setCategoryMoverStepIndex, setSourceCategoryIds, setDestinationCategoryIds, setActionMode, setTotalToMoveCount, setTotalMovedCount, setIsProductMovingStopping, setIsProductCategoriesMoving } = categoryMoverSlice.actions
-export default categoryMoverSlice.reducer;
+export const { setMoveProductsStepIndex, setSourceCategoryIds, setDestinationCategoryIds, setActionMode, setTotalToMoveCount, setTotalMovedCount, setIsProductMovingStopping, setIsProductCategoriesMoving } = moveProductsSlice.actions
+export default moveProductsSlice.reducer;

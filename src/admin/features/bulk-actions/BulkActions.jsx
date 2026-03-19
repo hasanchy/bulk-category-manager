@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ActionTypeSelect from './action-type-select/ActionTypeSelect';
+import MoveProducts from './move-products/MoveProducts';
 
 const BulkActions = () => {
 
@@ -10,7 +11,7 @@ const BulkActions = () => {
         if(bulkActionsType==='type-select'){
             return <ActionTypeSelect />;
         }else if(bulkActionsType==='move-products'){
-            return <div>Move Products Component</div>
+            return <MoveProducts />;
         }
         return null;
     }
