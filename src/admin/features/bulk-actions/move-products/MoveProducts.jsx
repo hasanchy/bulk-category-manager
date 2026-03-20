@@ -18,13 +18,12 @@ const MoveProducts = () => {
 
     const renderProductsMoverSteps = () => {
         if(moveProductsStepIndex===2){
-            // return <div>{__('Source Categories Step')}</div>;
             return <SourceCategories />;
-        }else if(moveProductsStepIndex===2){
-            // return <DestinationCategories />;
         }else if(moveProductsStepIndex===3){
-            // return <AdditionalOptions />;
+            // return <DestinationCategories />;
         }else if(moveProductsStepIndex===4){
+            // return <AdditionalOptions />;
+        }else if(moveProductsStepIndex===5){
             // return <PreviewMove />;
         }
     }

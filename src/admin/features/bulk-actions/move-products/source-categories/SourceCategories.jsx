@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { Button, Card, Col, Flex, Form, Row, Space } from 'antd';
 import { LeftOutlined, RightOutlined, SearchOutlined, SyncOutlined } from '@ant-design/icons';
-import CategoryMoverSteps from '../category-mover-steps/CategoryMoverSteps';
+import MoveProductsSteps from '../move-products-steps/MoveProductsSteps';
 import CategoriesCheckbox from '../../../../components/categories/CategoriesCheckbox';
 import { setMoveProductsStepIndex, setSourceCategoryIds } from '../moveProductsSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -46,7 +46,7 @@ const SourceCategories = () => {
     return (
         <React.Fragment>
             <Card>
-                <CategoryMoverSteps />
+                <MoveProductsSteps />
             </Card>
             <Card
                 style={{

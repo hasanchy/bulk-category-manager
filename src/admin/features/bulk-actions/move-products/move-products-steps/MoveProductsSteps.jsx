@@ -3,7 +3,7 @@ import { Card, Steps } from 'antd';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const CategoryMoverSteps = () => {
+const MoveProductsSteps = () => {
     const { moveProductsStepIndex } = useSelector((state) => state.moveProducts);
 
     const getStepItems = () => {
@@ -11,7 +11,6 @@ const CategoryMoverSteps = () => {
             {title: __( 'Move Products', 'bulk-category-manager' ) },
             {title: __( 'Source Categories', 'bulk-category-manager' ) },
             {title: __( 'Destination Categories', 'bulk-category-manager' ) },
-            {title: __( 'Additional Options', 'bulk-category-manager' ) },
             {title: __( 'Preview & Move', 'bulk-category-manager' ) },
         ];
 
@@ -27,4 +26,4 @@ const CategoryMoverSteps = () => {
 	)
 }
 
-export default CategoryMoverSteps;
+export default MoveProductsSteps;
