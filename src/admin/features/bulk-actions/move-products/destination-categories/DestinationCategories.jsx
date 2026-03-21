@@ -1,32 +1,49 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { Button, Card, Col, Flex, Form, Row, Space } from 'antd';
-import { LeftOutlined, RightOutlined, SearchOutlined, SyncOutlined } from '@ant-design/icons';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import MoveProductsSteps from '../move-products-steps/MoveProductsSteps';
 import CategoriesCheckbox from '../../../../components/categories/CategoriesCheckbox';
-import { setMoveProductsStepIndex, setSourceCategoryIds } from '../moveProductsSlice';
+import { setMoveProductsStepIndex, setDestinationCategoryIds } from '../moveProductsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { setBulkActionsType } from '../../bulkActionsSlice';
 
-const SourceCategories = () => {
+const DestinationCategories = () => {
 
-    const { sourceCategoryIds } = useSelector((state) => state.moveProducts);
+    const { destinationCategoryIds } = useSelector((state) => state.moveProducts);
     const dispatch = useDispatch();
     const [form] = Form.useForm();
 
     form.setFieldsValue({
-        sourceCategoryIds
+        destinationCategoryIds
     });
 
+    const handleBack = () => {
+        dispatch( setMoveProductsStepIndex(2) );
+    }
+
     const handleNext = () => {
-        dispatch( setMoveProductsStepIndex(3) );
+        dispatch( setMoveProductsStepIndex(4) );
     }
 
     const handleCategoriesChange = (value) => {
         form.setFieldsValue({ 
-            sourceCategoryIds: value
+            destinationCategoryIds: value
         });
-        dispatch(setSourceCategoryIds(value));
+        dispatch(setDestinationCategoryIds(value));
+    }
+
+    const renderFooterLeft = () => {
+        return <Flex justify='flex-start'>
+            <Button
+                icon={<LeftOutlined />}
+                iconPlacement="start"
+                type="default" 
+                disabled={false}
+                onClick={handleBack}
+            >
+                { __( 'Back', 'bulk-category-manager' ) }
+            </Button>
+        </Flex>
     }
 
     const renderFooterRight = () => {
@@ -35,7 +52,7 @@ const SourceCategories = () => {
                 icon={<RightOutlined />}
                 iconPlacement="end"
                 type="primary" 
-                disabled={sourceCategoryIds.length === 0}
+                disabled={destinationCategoryIds.length === 0}
                 onClick={handleNext}
             >
                 { __( 'Next', 'bulk-category-manager' ) }
@@ -58,17 +75,8 @@ const SourceCategories = () => {
                     size="middle" 
                     style={{ display: 'flex' }}
                 >
-                    <div>
-                        <Button
-                            icon={<LeftOutlined />}
-                            onClick={() => dispatch(setBulkActionsType('type-select'))}
-                        >
-                            { __( 'Back', 'bulk-category-manager' ) }
-                        </Button>
-
-                    </div>
                     <Form
-                        name="sourceCategory"
+                        name="destinationCategory"
                         form={form}
                         labelCol={{
                             span: 6,
@@ -83,7 +91,7 @@ const SourceCategories = () => {
                     >
                         <Form.Item
                             label={__('Categories', 'bulk-category-manager')}
-                            name="sourceCategoryIds"
+                            name="destinationCategoryIds"
                             rules={[
                                 {
                                     required: true,
@@ -112,7 +120,7 @@ const SourceCategories = () => {
             >
                 <div className='bulkcatman-product-search-footer'>
                     <div className='bulkcatman-product-search-footer-left'>
-                        {/* {renderFooterLeft()} */}
+                        {renderFooterLeft()}
                     </div>
                     <div className='bulkcatman-product-search-footer-center'>
                         {/* {renderFooterCenter()} */}
@@ -126,4 +134,4 @@ const SourceCategories = () => {
     )
 }
 
-export default SourceCategories;
+export default DestinationCategories;
