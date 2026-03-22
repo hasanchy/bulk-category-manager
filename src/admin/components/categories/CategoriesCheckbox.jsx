@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Checkbox, Card, Typography, Tag, Space, Button, Tooltip, Spin, Row, Col, Input, Tree } from 'antd';
 import { ReloadOutlined, PlusOutlined, SearchOutlined, CloseOutlined, CloseCircleFilled } from '@ant-design/icons';
@@ -13,7 +13,14 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 
 	const [selectedCategories, setSelectedCategories] = useState(value ?? []);
 	const [searchKeyword, setSearchKeyword] = useState('');
+	const [expandedKeys, setExpandedKeys] = useState([]);
 	const [isAddCategoryVisible, setIsAddCategoryVisible] = useState(false);
+
+	useEffect(() => {
+		if (categories.length) {
+			setExpandedKeys(categories.map(c => c.term_id));
+		}
+	}, [categories]);
 
 	const handleCheckboxChange = (category, e) => {
 		let checked = e.target.checked;
@@ -247,7 +254,8 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 				<div className="bulkcatman-product-categories" style={{ marginTop: '16px' }}>
 					<Tree
 						treeData={renderCategoryTree(filteredCategories)}
-						defaultExpandAll
+						expandedKeys={expandedKeys}
+						onExpand={setExpandedKeys}
 						selectable={false}
 					/>
 				</div>

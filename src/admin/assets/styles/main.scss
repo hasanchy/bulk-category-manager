@@ -136,6 +136,9 @@
     margin-left: auto;
     line-height: 65px;
 }
+.ant-tree-list-holder [role="treeitem"] span[aria-hidden] {
+    position: relative;
+}
 
 .ant-statistic-title {
 	font-weight: 600;

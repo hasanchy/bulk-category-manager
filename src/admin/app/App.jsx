@@ -1,17 +1,29 @@
 import React, { useEffect, useMemo } from 'react';
 import { ConfigProvider, Layout, Menu, App as AntdApp } from 'antd';
 const { Header, Content } = Layout;
-import { SettingOutlined, ProductOutlined } from '@ant-design/icons';
+import { DashboardOutlined, AppstoreOutlined, ProductOutlined, SettingOutlined } from '@ant-design/icons';
 import { __ } from '@wordpress/i18n';
 import { setActiveTab } from './manuSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from '../services/apiService';
 import { NotificationProvider } from '../utils/NotificationProvider';
 import CategoryMover from '../features/category-mover/CategoryMover';
+import Dashboard from '../features/dashboard/Dashboard';
+import BulkActions from '../features/bulk-actions/BulkActions';
 
 const colorHighlight = window.bulkcatmanData.adminColors.highlight;
 
 const menuItems = [
+    {
+        label: __('Dashboard', 'bulk-category-manager'),
+        key: 'dashboard',
+        icon: <DashboardOutlined />,
+    },
+    {
+        label: __('Bulk Actions', 'bulk-category-manager'),
+        key: 'bulkActions',
+        icon: <AppstoreOutlined />,
+    },
     {
         label: __('Category Mover', 'bulk-category-manager'),
         key: 'categoryMover',
@@ -34,6 +46,8 @@ const App = () => {
 	}, []);
 
     const tabComponents = useMemo(() => ({
+        dashboard: <Dashboard />,
+        bulkActions: <BulkActions />,
         categoryMover: <CategoryMover></CategoryMover>,
         settings: <div>Settings</div>,
     }), []);
@@ -71,7 +85,7 @@ const App = () => {
                             <Menu
                                 theme="dark"
                                 mode="horizontal"
-                                defaultSelectedKeys={['products']}
+                                defaultSelectedKeys={['dashboard']}
                                 selectedKeys={activeTab}
                                 items={menuItems}
                                 style={{ flex: 1, minWidth: 0 }}
