@@ -10,7 +10,7 @@ const MoveProductsSteps = () => {
 		let items = [
             {title: __( 'Move Products', 'bulk-category-manager' ) },
             {title: __( 'Source Categories', 'bulk-category-manager' ) },
-            {title: __( 'Destination Categories', 'bulk-category-manager' ) },
+            {title: __( 'Target Categories', 'bulk-category-manager' ) },
             {title: __( 'Preview & Move', 'bulk-category-manager' ) },
         ];
 

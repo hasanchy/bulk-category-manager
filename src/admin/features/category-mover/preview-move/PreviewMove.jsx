@@ -14,7 +14,7 @@ const PreviewMove = () => {
     const dispatch = useDispatch();
     const stopMovingProducts = useRef(false);
 
-    const { sourceCategoryIds, destinationCategoryIds, actionMode, isProductCategoriesMoving, isProductMovingStopping } = useSelector((state) => state.categoryMover);
+    const { sourceCategoryIds, targetCategoryIds, actionMode, isProductCategoriesMoving, isProductMovingStopping } = useSelector((state) => state.categoryMover);
 
     useEffect(()=>{
         if(isProductMovingStopping){
@@ -34,7 +34,7 @@ const PreviewMove = () => {
 
         let data = {
             source_categories: sourceCategoryIds.map(category => category.id),
-            destination_categories: destinationCategoryIds.map(category => category.id),
+            destination_categories: targetCategoryIds.map(category => category.id),
             batch_size: 10
         };
 
@@ -122,7 +122,7 @@ const PreviewMove = () => {
 
     const renderDestinationCategories = () => {
         return <Space wrap>
-            {destinationCategoryIds.map((category, index) => (
+            {targetCategoryIds.map((category, index) => (
                 <Tag
                     key={`category-${index}`}
                     color={'pink'}
@@ -206,7 +206,7 @@ const PreviewMove = () => {
                     </Row>
                     <Divider orientation="left">
                         <Space>
-                            { __('Destination Categories', 'bulk-category-manager' ) } <EditOutlined style={{cursor:'pointer'}} onClick={() => dispatch(setCategoryMoverStepIndex(2))}/>
+                            { __('Target Categories', 'bulk-category-manager' ) } <EditOutlined style={{cursor:'pointer'}} onClick={() => dispatch(setCategoryMoverStepIndex(2))}/>
                         </Space>
                     </Divider>
                     <Row gutter={16}>

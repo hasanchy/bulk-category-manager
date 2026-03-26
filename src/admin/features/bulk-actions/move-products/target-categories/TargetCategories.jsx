@@ -4,17 +4,17 @@ import { Button, Card, Col, Flex, Form, Row, Space } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import MoveProductsSteps from '../move-products-steps/MoveProductsSteps';
 import CategoriesCheckbox from '../../../../components/categories/CategoriesCheckbox';
-import { setMoveProductsStepIndex, setDestinationCategoryIds } from '../moveProductsSlice';
+import { setMoveProductsStepIndex, setTargetCategoryIds } from '../moveProductsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-const DestinationCategories = () => {
+const TargetCategories = () => {
 
-    const { destinationCategoryIds } = useSelector((state) => state.moveProducts);
+    const { targetCategoryIds } = useSelector((state) => state.moveProducts);
     const dispatch = useDispatch();
     const [form] = Form.useForm();
 
     form.setFieldsValue({
-        destinationCategoryIds
+        targetCategoryIds
     });
 
     const handleBack = () => {
@@ -27,9 +27,9 @@ const DestinationCategories = () => {
 
     const handleCategoriesChange = (value) => {
         form.setFieldsValue({ 
-            destinationCategoryIds: value
+            targetCategoryIds: value
         });
-        dispatch(setDestinationCategoryIds(value));
+        dispatch(setTargetCategoryIds(value));
     }
 
     const renderFooterLeft = () => {
@@ -52,7 +52,7 @@ const DestinationCategories = () => {
                 icon={<RightOutlined />}
                 iconPlacement="end"
                 type="primary" 
-                disabled={destinationCategoryIds.length === 0}
+                disabled={targetCategoryIds.length === 0}
                 onClick={handleNext}
             >
                 { __( 'Next', 'bulk-category-manager' ) }
@@ -76,7 +76,7 @@ const DestinationCategories = () => {
                     style={{ display: 'flex' }}
                 >
                     <Form
-                        name="destinationCategory"
+                        name="targetCategory"
                         form={form}
                         labelCol={{
                             span: 6,
@@ -91,7 +91,7 @@ const DestinationCategories = () => {
                     >
                         <Form.Item
                             label={__('Categories', 'bulk-category-manager')}
-                            name="destinationCategoryIds"
+                            name="targetCategoryIds"
                             rules={[
                                 {
                                     required: true,
@@ -134,4 +134,4 @@ const DestinationCategories = () => {
     )
 }
 
-export default DestinationCategories;
+export default TargetCategories;

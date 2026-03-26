@@ -4,7 +4,7 @@ import { moveProductCategories } from '../../../services/apiService';
 const initialState = {
     moveProductsStepIndex: 2,
     sourceCategoryIds: [],
-    destinationCategoryIds: [],
+    targetCategoryIds: [],
     actionMode: 'move',
     isProductCategoriesMoving: false,
     isMovingApiRequestInProgress: false,
@@ -24,8 +24,8 @@ export const moveProductsSlice = createSlice({
         setSourceCategoryIds: (state, action) => {
             state.sourceCategoryIds = action.payload
         },
-        setDestinationCategoryIds: (state, action) => {
-            state.destinationCategoryIds = action.payload
+        setTargetCategoryIds: (state, action) => {
+            state.targetCategoryIds = action.payload
         },
         setActionMode: (state, action) => {
             state.actionMode = action.payload
@@ -56,5 +56,5 @@ export const moveProductsSlice = createSlice({
     }
 });
 
-export const { setMoveProductsStepIndex, setSourceCategoryIds, setDestinationCategoryIds, setActionMode, setTotalToMoveCount, setTotalMovedCount, setIsProductMovingStopping, setIsProductCategoriesMoving } = moveProductsSlice.actions
+export const { setMoveProductsStepIndex, setSourceCategoryIds, setTargetCategoryIds, setActionMode, setTotalToMoveCount, setTotalMovedCount, setIsProductMovingStopping, setIsProductCategoriesMoving } = moveProductsSlice.actions
 export default moveProductsSlice.reducer;
