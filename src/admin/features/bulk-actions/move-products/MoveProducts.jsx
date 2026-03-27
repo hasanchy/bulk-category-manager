@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import SourceCategories from './source-categories/SourceCategories';
 import TargetCategories from './target-categories/TargetCategories';
 // import AdditionalOptions from './additional-options/AdditionalOptions';
-// import PreviewMove from './preview-move/PreviewMove';
+import ConfirmMove from './confirm-move/ConfirmMove';
 
 const MoveProducts = () => {
 
@@ -22,7 +22,7 @@ const MoveProducts = () => {
         }else if(moveProductsStepIndex===3){
             return <TargetCategories />;
         }else if(moveProductsStepIndex===4){
-            // return <AdditionalOptions />;
+            return <ConfirmMove />;
         }else if(moveProductsStepIndex===5){
             // return <PreviewMove />;
         }
