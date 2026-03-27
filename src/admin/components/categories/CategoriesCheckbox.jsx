@@ -20,12 +20,12 @@ const CategoriesCheckbox = ({
 
 	const [selectedCategories, setSelectedCategories] = useState(value ?? []);
 	const [searchKeyword, setSearchKeyword] = useState('');
-	const [expandedKeys, setExpandedKeys] = useState([]);
+	const [expandedKeys, setExpandedKeys] = useState(categories.map(c => c.term_id));
 	const [isAddCategoryVisible, setIsAddCategoryVisible] = useState(false);
 
 	useEffect(() => {
 		if (categories.length) {
-			setExpandedKeys(categories.map(c => c.term_id));
+			// setExpandedKeys(categories.map(c => c.term_id));
 		}
 	}, [categories]);
 
