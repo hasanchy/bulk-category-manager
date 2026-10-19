@@ -92,9 +92,11 @@ const SourceCategories = () => {
                             ]}
                         >
                             <CategoriesCheckbox 
-                                disabled={false} 
+                                disabled={false}
                                 onChange={handleCategoriesChange} 
                                 displayError={false}
+                                disableEmptyCategories={true}
+                                disabledCategoryIds={[]}
                             />
                         </Form.Item>
                     </Form>

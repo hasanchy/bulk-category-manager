@@ -9,7 +9,7 @@ const CategoryMoverSteps = () => {
     const getStepItems = () => {
 		let items = [
             {title: __( 'Source Categories', 'bulk-category-manager' ) },
-            {title: __( 'Destination Categories', 'bulk-category-manager' ) },
+            {title: __( 'Target Categories', 'bulk-category-manager' ) },
             {title: __( 'Additional Options', 'bulk-category-manager' ) },
             {title: __( 'Preview & Move', 'bulk-category-manager' ) },
         ];

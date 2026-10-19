@@ -112,7 +112,7 @@ class Categories extends Endpoint {
 	}
 
 	/**
-     * Move products from source categories to destination categories in batches.
+     * Move products from source categories to Target Categories in batches.
      */
     public function move_products(WP_REST_Request $request) {
 
@@ -162,7 +162,7 @@ class Categories extends Endpoint {
             // Remove source categories
             $new_categories = array_diff($existing_cats, $source);
 
-            // Add destination categories
+            // Add Target Categories
             $new_categories = array_unique(array_merge($new_categories, $destination));
 
             wp_set_post_terms($product_id, $new_categories, 'product_cat');

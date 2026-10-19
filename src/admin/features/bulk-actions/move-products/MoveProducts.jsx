@@ -3,9 +3,9 @@ import { __ } from '@wordpress/i18n';
 import { useSelector } from 'react-redux';
 
 import SourceCategories from './source-categories/SourceCategories';
-import DestinationCategories from './destination-categories/DestinationCategories';
+import TargetCategories from './target-categories/TargetCategories';
 // import AdditionalOptions from './additional-options/AdditionalOptions';
-// import PreviewMove from './preview-move/PreviewMove';
+import ConfirmMove from './confirm-move/ConfirmMove';
 
 const MoveProducts = () => {
 
@@ -20,9 +20,9 @@ const MoveProducts = () => {
         if(moveProductsStepIndex===2){
             return <SourceCategories />;
         }else if(moveProductsStepIndex===3){
-            return <DestinationCategories />;
+            return <TargetCategories />;
         }else if(moveProductsStepIndex===4){
-            // return <AdditionalOptions />;
+            return <ConfirmMove />;
         }else if(moveProductsStepIndex===5){
             // return <PreviewMove />;
         }

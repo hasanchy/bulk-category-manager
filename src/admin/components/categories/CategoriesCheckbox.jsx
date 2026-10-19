@@ -7,18 +7,25 @@ import { fetchCategories } from '../../services/apiService';
 import AddCategoryPopup from './AddCategoryPopup';
 const { Text } = Typography;
 
-const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
+const CategoriesCheckbox = ({ 
+	value, 
+	onChange, 
+	disabled, 
+	displayError,
+	disableEmptyCategories = false,
+	disabledCategoryIds = []
+}) => {
 	const dispatch = useDispatch();
 	const { categories, isLoading } = useSelector((state) => state.categories);
 
 	const [selectedCategories, setSelectedCategories] = useState(value ?? []);
 	const [searchKeyword, setSearchKeyword] = useState('');
-	const [expandedKeys, setExpandedKeys] = useState([]);
+	const [expandedKeys, setExpandedKeys] = useState(categories.map(c => c.term_id));
 	const [isAddCategoryVisible, setIsAddCategoryVisible] = useState(false);
 
 	useEffect(() => {
 		if (categories.length) {
-			setExpandedKeys(categories.map(c => c.term_id));
+			// setExpandedKeys(categories.map(c => c.term_id));
 		}
 	}, [categories]);
 
@@ -107,7 +114,12 @@ const CategoriesCheckbox = ({ value, onChange, disabled, displayError }) => {
 			title: (
 				<Checkbox
 					onChange={(e) => handleCheckboxChange(category, e)}
-					disabled={disabled || isLoading}
+					disabled={
+						disabled || 
+						isLoading || 
+						(disableEmptyCategories && category.count === 0) ||
+						disabledCategoryIds.includes(category.term_id)
+					}
 					checked={selectedCategories.some(sc => sc.id === category.term_id)}
 				>
 					{highlightText(category.name?.replace(/&amp;/g, "&"), searchKeyword)} ({category.count})
